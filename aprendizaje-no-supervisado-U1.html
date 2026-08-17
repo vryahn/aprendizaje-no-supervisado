@@ -449,8 +449,8 @@ border-radius:2px}
 <span class="pill ok" id="mejor" hidden>Tu mejor quiz: <b></b></span>
 </div></div></div>
 <div class="rutas" role="group" aria-label="Elige tu ruta de estudio">
-<button type="button" class="ruta" data-ruta="quiz" aria-pressed="false"><span class="et">Ruta práctica</span><span class="t">1 h 50 min</span><span class="d">Bloques 1, 3, 4 — el camino corto</span></button>
-<button type="button" class="ruta" data-ruta="completa" aria-pressed="true"><span class="et">Ruta completa</span><span class="t">3 h 33 min</span><span class="d">Los cuatro bloques, para comprender y aplicar</span></button>
+<button type="button" class="ruta" data-ruta="quiz" aria-pressed="false"><span class="et">Ruta práctica</span><span class="t">2 h 04 min</span><span class="d">Bloques 1, 3, 4 — el camino corto</span></button>
+<button type="button" class="ruta" data-ruta="completa" aria-pressed="true"><span class="et">Ruta completa</span><span class="t">4 h 24 min</span><span class="d">Los cuatro bloques, para comprender y aplicar</span></button>
 </div>
 <details class="nota"><summary>Cómo se calculan estos tiempos, y qué no prometen</summary><p>Los calcula el generador de esta guía contando lo que hay en cada bloque, con tasas <b>provisionales</b>: 100 palabras/min de prosa nueva, 160 de repaso, 4 min por bloque de código, 1 min por bloque de salida, 2 min por figura y 1.5 min por pregunta de quiz. Son una conjetura declarada, no una medición. Miden el tiempo de <b>recorrer</b> el material: no incluyen releer lo que no cuajó, ni las lecturas del curso, ni pelearse con un error de instalación. Anota tu tiempo real en cada bloque (se guarda en este navegador, sin cuentas ni servidor) y las unidades siguientes se estimarán con <i>tu</i> tasa.</p></details>
 <p class="nota" id="real-total"></p>
@@ -459,15 +459,18 @@ border-radius:2px}
 <p class="repaso-cta"><button type="button" class="calificar" id="repaso-btn" hidden>Repaso rápido · 10 preguntas</button><span class="nota" id="repaso-info"></span></p>
 </section>
 <section class="plan">
-<h2>Plan de estudio · 4 sesiones de 49-56 min (ruta completa)</h2>
+<h2>Plan de estudio · 6 sesiones de 22-58 min (ruta completa)</h2>
 <ol class="sesiones">
-<li data-sesion="1"><span class="n">1</span><div><span class="dur">54 min</span><span class="det">desde <a href="#b1-intro">Qué vas a poder hacer al terminar</a> hasta 3. Los datos son una tabla de números: el arreglo de numpy · 8 secciones</span></div><span class="fecha"></span></li>
-<li data-sesion="2"><span class="n">2</span><div><span class="dur">54 min</span><span class="det">desde <a href="#b2-4-ver-cosas-el-minimo-de-matplotlib">4. Ver cosas: el mínimo de matplotlib</a> hasta 9. Cómo se entrega en esta materia · 6 secciones</span></div><span class="fecha"></span></li>
-<li data-sesion="3"><span class="n">3</span><div><span class="dur">56 min</span><span class="det">desde <a href="#b2-10-glosario-de-bolsillo">10. Glosario de bolsillo</a> hasta 5. Paso 1 — aplicar k-means con k = 8 · 16 secciones</span></div><span class="fecha"></span></li>
-<li data-sesion="4"><span class="n">4</span><div><span class="dur">49 min</span><span class="det">desde <a href="#b4-6-paso-2-imprimir-los-centroides-y-dibujar-la-pa">6. Paso 2 — imprimir los centroides y dibujar la paleta</a> hasta Apéndice · Solución de referencia — ábrelo DESPUÉS de intentarlo · 7 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="1"><span class="n">1</span><div><span class="dur">22 min</span><span class="det">desde <a href="#b1-intro">Qué vas a poder hacer al terminar</a> hasta 2. Agrupar (clustering): la idea antes del término · 7 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="2"><span class="n">2</span><div><span class="dur">46 min</span><span class="det"><a href="#b2-3-los-datos-son-una-tabla-de-numeros-el-arreglo-">3. Los datos son una tabla de números: el arreglo de numpy</a> · 1 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="3"><span class="n">3</span><div><span class="dur">41 min</span><span class="det">desde <a href="#b2-4-ver-cosas-el-minimo-de-matplotlib">4. Ver cosas: el mínimo de matplotlib</a> hasta 6. k-means · 3 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="4"><span class="n">4</span><div><span class="dur">48 min</span><span class="det">desde <a href="#b2-7-el-patron-fit-predict-de-scikit-learn">7. El patrón fit / predict de scikit-learn</a> hasta Trampa 3 · <code>random_state=0</code> no es &quot;la mejor solución&quot; · 8 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="5"><span class="n">5</span><div><span class="dur">58 min</span><span class="det">desde <a href="#b3-trampa-4-astype-uint8-trunca-no-redondea">Trampa 4 · <code>astype(&quot;uint8&quot;)</code> trunca, no redondea</a> hasta 5. Paso 1 — aplicar k-means con k = 8 · 11 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="6"><span class="n">6</span><div><span class="dur">49 min</span><span class="det">desde <a href="#b4-6-paso-2-imprimir-los-centroides-y-dibujar-la-pa">6. Paso 2 — imprimir los centroides y dibujar la paleta</a> hasta Apéndice · Solución de referencia — ábrelo DESPUÉS de intentarlo · 7 secciones</span></div><span class="fecha"></span></li>
 </ol>
 <p class="nota" id="plan-nota"></p>
 </section>
+<section class="bloque" id="repaso" hidden><div class="cab"><div class="bn" aria-hidden="true">&#8635;</div><div><h2>Repaso rápido</h2><div class="meta"><span class="chip">10 preguntas de toda la unidad, primero las que has fallado, el resto al azar</span></div></div></div><div id="repaso-cuerpo"></div></section>
 <main>
 <section class="bloque" id="b1"><div class="cab">
 <div class="bn" aria-hidden="true">1</div><div>
@@ -559,7 +562,7 @@ como tales en el bloque 4.</p>
 <div class="bn" aria-hidden="true">2</div><div>
 <h2>El tema</h2>
 <div class="meta">
-<span class="chip">1 h 43 min estimados</span>
+<span class="chip">2 h 20 min estimados</span>
 <label class="tiempo">tu tiempo real <input class="real" type="number" min="0" step="1" inputmode="numeric" id="real-b2" name="real-b2" data-bloque="2" aria-label="tiempo real del bloque 2 en minutos"> min</label>
 </div></div></div>
 <p>Estas notas son el piso común de la materia. Suponen que sabes Python básico
@@ -606,6 +609,36 @@ humano una por una. Por eso importa saber trabajar sin ellas.</p>
 respuestas, <strong>no existe UNA partición correcta</strong>. Dos agrupamientos distintos
 pueden ser ambos razonables. Todo depende del problema. Por eso en los
 entregables se pide <em>explicar</em> e <em>interpretar</em>, no solo calcular.</p>
+<p><strong>En una frase:</strong> el <strong>aprendizaje no supervisado</strong> busca estructura en datos sin
+respuestas asignadas por humanos, así que no existe una única partición correcta.</p>
+<form class="quiz" data-quiz="b2s1-0" data-total="3">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 3 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b2s1-0-q1">
+<legend><span class="num">1</span><span class="txt">Una tienda tiene 40 000 tickets de compra sin ninguna marca de &quot;cliente bueno&quot; o &quot;cliente malo&quot;, y quiere descubrir qué tipos de comprador tiene. ¿Qué clase de problema es?</span></legend>
+<div class="opcion"><input type="radio" name="b2s1-0-q1" id="b2s1-0-q1-o0"><label for="b2s1-0-q1-o0"><b>a)</b> <span>Supervisado: el ticket ya trae escrito el tipo de comprador</span></label></div>
+<div class="opcion"><input type="radio" name="b2s1-0-q1" id="b2s1-0-q1-o1" data-ok="1"><label for="b2s1-0-q1-o1"><b>b)</b> <span>No supervisado: nadie asignó la respuesta, hay que hallar la estructura</span></label></div>
+<div class="opcion"><input type="radio" name="b2s1-0-q1" id="b2s1-0-q1-o2"><label for="b2s1-0-q1-o2"><b>c)</b> <span>No supervisado solo si los tickets son menos de mil</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s1-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b. La definición no depende del tamaño ni del algoritmo, sino de si existe una respuesta que un humano asignó. La a es falsa: el ticket trae lo que se compró, no una etiqueta de tipo de cliente. La c inventa un umbral: 40 000 o 40 datos, sin etiquetas sigue siendo no supervisado.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s1-0-q2">
+<legend><span class="num">2</span><span class="txt">Un hospital paga a tres médicos para escribir &quot;sano&quot; o &quot;enfermo&quot; en 5 000 radiografías. Esa palabra escrita es...</span></legend>
+<div class="opcion"><input type="radio" name="b2s1-0-q2" id="b2s1-0-q2-o0" data-ok="1"><label for="b2s1-0-q2-o0"><b>a)</b> <span>la etiqueta, y es la parte cara del conjunto de datos</span></label></div>
+<div class="opcion"><input type="radio" name="b2s1-0-q2" id="b2s1-0-q2-o1"><label for="b2s1-0-q2-o1"><b>b)</b> <span>el cluster que el algoritmo encontró</span></label></div>
+<div class="opcion"><input type="radio" name="b2s1-0-q2" id="b2s1-0-q2-o2"><label for="b2s1-0-q2-o2"><b>c)</b> <span>una característica más de la radiografía</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s1-0-q2-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La a. La etiqueta es la respuesta correcta que pone un humano, y por eso es lo caro: alguien la escribió una por una. La b confunde etiqueta de humano con etiqueta de cluster, que sale del algoritmo y no existía antes de correrlo. La c falla porque las características son los datos que describen la radiografía (sus pixeles), no la respuesta sobre ella.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s1-0-q3">
+<legend><span class="num">3</span><span class="txt">Dos compañeros agrupan las mismas 300 reseñas y obtienen particiones distintas; las dos se ven razonables. ¿Qué es lo correcto?</span></legend>
+<div class="opcion"><input type="radio" name="b2s1-0-q3" id="b2s1-0-q3-o0"><label for="b2s1-0-q3-o0"><b>a)</b> <span>Uno se equivocó: solo una partición puede ser correcta</span></label></div>
+<div class="opcion"><input type="radio" name="b2s1-0-q3" id="b2s1-0-q3-o1"><label for="b2s1-0-q3-o1"><b>b)</b> <span>Volver a correr el algoritmo hasta que las dos coincidan</span></label></div>
+<div class="opcion"><input type="radio" name="b2s1-0-q3" id="b2s1-0-q3-o2" data-ok="1"><label for="b2s1-0-q3-o2"><b>c)</b> <span>Las dos pueden ser válidas: sin etiquetas no hay UNA partición correcta, por eso se pide explicar e interpretar</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s1-0-q3-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La c. Al no haber respuestas, dos agrupamientos distintos pueden ser ambos defendibles, y lo que decide es el problema que quieres resolver. La a supone una respuesta correcta que aquí no existe. La b es peor: forzar la coincidencia no la vuelve correcta, y además basta cambiar la semilla para que los grupos se renombren sin cambiar nada de fondo (§8).</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 <hr />
 
 <div class="estado" data-sec="b2-1-que-significa-no-supervisado"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
@@ -652,6 +685,37 @@ detallamos la primera, que es la que las primeras prácticas usan:</p>
 </tr>
 </tbody>
 </table></div>
+<p><strong>En una frase:</strong> <strong>agrupar</strong> es formar montones de datos parecidos usando una
+función distancia; el curso ve familias por centroides, densidad, aglomeración y
+división.</p>
+<form class="quiz" data-quiz="b2s2-0" data-total="3">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 3 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b2s2-0-q1">
+<legend><span class="num">1</span><span class="txt">Según la tabla de esta sección, <code>DBSCAN</code> pertenece a la familia que...</span></legend>
+<div class="opcion"><input type="radio" name="b2s2-0-q1" id="b2s2-0-q1-o0"><label for="b2s2-0-q1-o0"><b>a)</b> <span>busca puntos representativos y reparte los datos por cercanía</span></label></div>
+<div class="opcion"><input type="radio" name="b2s2-0-q1" id="b2s2-0-q1-o1" data-ok="1"><label for="b2s2-0-q1-o1"><b>b)</b> <span>agrupa donde los datos están apretados</span></label></div>
+<div class="opcion"><input type="radio" name="b2s2-0-q1" id="b2s2-0-q1-o2"><label for="b2s2-0-q1-o2"><b>c)</b> <span>empieza con todo junto y lo va partiendo</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s2-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b: <code>DBSCAN</code> es la familia de densidad. La a describe la familia de centroides (<code>KMeans</code>, <code>BisectingKMeans</code>), que es la que usan las primeras prácticas. La c describe la familia de división, donde también cae <code>BisectingKMeans</code>.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s2-0-q2">
+<legend><span class="num">2</span><span class="txt">Cuando en esta materia se dice que &quot;dos datos son similares&quot;, eso se traduce a números diciendo que...</span></legend>
+<div class="opcion"><input type="radio" name="b2s2-0-q2" id="b2s2-0-q2-o0" data-ok="1"><label for="b2s2-0-q2-o0"><b>a)</b> <span>la distancia entre ellos es pequeña</span></label></div>
+<div class="opcion"><input type="radio" name="b2s2-0-q2" id="b2s2-0-q2-o1"><label for="b2s2-0-q2-o1"><b>b)</b> <span>la distancia entre ellos es grande</span></label></div>
+<div class="opcion"><input type="radio" name="b2s2-0-q2" id="b2s2-0-q2-o2"><label for="b2s2-0-q2-o2"><b>c)</b> <span>ya venían con el mismo número de etiqueta antes de correr el algoritmo</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s2-0-q2-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La a: la similaridad se mide con una función distancia, y entre más chica la distancia, más parecidos. La b invierte la relación. La c es imposible en este contexto: los números de etiqueta los produce el algoritmo al agrupar, no entran como dato.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s2-0-q3">
+<legend><span class="num">3</span><span class="txt"><code>AgglomerativeClustering</code> corresponde a la idea de que...</span></legend>
+<div class="opcion"><input type="radio" name="b2s2-0-q3" id="b2s2-0-q3-o0"><label for="b2s2-0-q3-o0"><b>a)</b> <span>todo empieza junto y se va partiendo</span></label></div>
+<div class="opcion"><input type="radio" name="b2s2-0-q3" id="b2s2-0-q3-o1"><label for="b2s2-0-q3-o1"><b>b)</b> <span>se agrupa donde los datos están apretados</span></label></div>
+<div class="opcion"><input type="radio" name="b2s2-0-q3" id="b2s2-0-q3-o2" data-ok="1"><label for="b2s2-0-q3-o2"><b>c)</b> <span>cada dato empieza solo y se van uniendo</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s2-0-q3-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La c, que es literalmente lo que significa aglomerar. La a es la familia de división. La b es la de densidad, cuya clase típica es <code>DBSCAN</code> o <code>HDBSCAN</code>.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 <hr />
 
 <div class="estado" data-sec="b2-2-agrupar-clustering-la-idea-antes-del-termino"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
@@ -815,6 +879,37 @@ vuelta a 4. Cuando hagas cuentas con pixeles, conviértelos a decimales
 </ol>
 <p>Ese <code>A[0, 0]</code> se lee: &quot;fila 0, columna 0&quot;, es decir el pixel de la esquina
 superior izquierda; devuelve sus 3 canales.</p>
+<p><strong>En una frase:</strong> un <strong>arreglo</strong> de numpy es una tabla de números con forma
+<code>(n datos, d características)</code> que aplica cada operación a todos sus valores de
+golpe.</p>
+<form class="quiz" data-quiz="b2s3-0" data-total="3">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 3 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b2s3-0-q1">
+<legend><span class="num">1</span><span class="txt">¿Qué imprimen, en este orden, <code>print([2, 4, 6] * 3)</code> y <code>print(np.array([2, 4, 6]) * 3)</code>?</span></legend>
+<div class="opcion"><input type="radio" name="b2s3-0-q1" id="b2s3-0-q1-o0" data-ok="1"><label for="b2s3-0-q1-o0"><b>a)</b> <span><code>[2, 4, 6, 2, 4, 6, 2, 4, 6]</code> y luego <code>[ 6 12 18]</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s3-0-q1" id="b2s3-0-q1-o1"><label for="b2s3-0-q1-o1"><b>b)</b> <span><code>[ 6 12 18]</code> las dos veces</span></label></div>
+<div class="opcion"><input type="radio" name="b2s3-0-q1" id="b2s3-0-q1-o2"><label for="b2s3-0-q1-o2"><b>c)</b> <span><code>[2, 4, 6, 2, 4, 6, 2, 4, 6]</code> las dos veces</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s3-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La a, medido. La lista <strong>repite</strong> su contenido tres veces; el arreglo <strong>multiplica cada número</strong> por 3. La b supondría que una lista normal sabe hacer cuentas, y no: <code>[2,4,6] + 5</code> incluso daría <code>TypeError</code>. La c supondría lo contrario, que el arreglo repite, y ahí se pierde toda la ventaja de numpy. Pista visual: el arreglo se imprime sin comas.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s3-0-q2">
+<legend><span class="num">2</span><span class="txt"><code>pal</code> tiene forma <code>(4, 3)</code> y <code>et = np.array([3, 0, 3, 1, 2, 3, 0])</code>. ¿Qué imprime <code>print(pal[et].shape)</code>?</span></legend>
+<div class="opcion"><input type="radio" name="b2s3-0-q2" id="b2s3-0-q2-o0"><label for="b2s3-0-q2-o0"><b>a)</b> <span><code>(4, 3)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s3-0-q2" id="b2s3-0-q2-o1"><label for="b2s3-0-q2-o1"><b>b)</b> <span><code>(3, 7)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s3-0-q2" id="b2s3-0-q2-o2" data-ok="1"><label for="b2s3-0-q2-o2"><b>c)</b> <span><code>(7, 3)</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s3-0-q2-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La c, medido. El indexado por lista de índices trae <strong>una fila de <code>pal</code> por cada número de <code>et</code></strong>, en ese orden y con repeticiones permitidas: 7 números piden 7 filas, cada una con las 3 columnas de <code>pal</code>. La a es la forma de <code>pal</code>, que no cambia. La b tiene los ejes al revés: la primera dimensión siempre cuenta filas.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s3-0-q3">
+<legend><span class="num">3</span><span class="txt"><code>img = Image.open(...)</code> imprime <code>img.size</code> como <code>(800, 600)</code>. ¿Qué imprimirá <code>np.array(img).shape</code>?</span></legend>
+<div class="opcion"><input type="radio" name="b2s3-0-q3" id="b2s3-0-q3-o0"><label for="b2s3-0-q3-o0"><b>a)</b> <span><code>(800, 600, 3)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s3-0-q3" id="b2s3-0-q3-o1" data-ok="1"><label for="b2s3-0-q3-o1"><b>b)</b> <span><code>(600, 800, 3)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s3-0-q3" id="b2s3-0-q3-o2"><label for="b2s3-0-q3-o2"><b>c)</b> <span><code>(3, 600, 800)</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s3-0-q3-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b. PIL reporta <code>(ancho, alto)</code> y numpy <code>(alto, ancho, canales)</code>: están invertidos, y en numpy la primera dimensión siempre es la fila de pixeles. La a copia el orden de PIL sin invertirlo, que es el error típico. La c pone los canales al frente, convención de otras librerías pero no la de numpy con Pillow.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 <hr />
 
 <div class="estado" data-sec="b2-3-los-datos-son-una-tabla-de-numeros-el-arreglo-"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
@@ -840,6 +935,28 @@ plt.show()
 </code></pre></div>
 <p>En un notebook de Jupyter las figuras aparecen debajo de la celda; no necesitas
 guardar archivos.</p>
+<p><strong>En una frase:</strong> con <strong><code>imshow</code></strong> dibujas un arreglo como imagen, y espera forma
+<code>(alto, ancho, 3)</code> con enteros de 0 a 255 o decimales de 0.0 a 1.0.</p>
+<form class="quiz" data-quiz="b2s4-0" data-total="2">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 2 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b2s4-0-q1">
+<legend><span class="num">1</span><span class="txt">Quieres dos fotos lado a lado dentro de la misma figura. ¿Cuál es la forma correcta?</span></legend>
+<div class="opcion"><input type="radio" name="b2s4-0-q1" id="b2s4-0-q1-o0" data-ok="1"><label for="b2s4-0-q1-o0"><b>a)</b> <span><code>fig, ax = plt.subplots(1, 2, figsize=(12, 4))</code> y luego <code>ax[0].imshow(A)</code> y <code>ax[1].imshow(B)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s4-0-q1" id="b2s4-0-q1-o1"><label for="b2s4-0-q1-o1"><b>b)</b> <span><code>plt.imshow(A, B)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s4-0-q1" id="b2s4-0-q1-o2"><label for="b2s4-0-q1-o2"><b>c)</b> <span><code>plt.figure(figsize=(12, 4))</code> y luego <code>plt.imshow(A)</code> y <code>plt.imshow(B)</code> seguidos</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s4-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La a: <code>subplots(1, 2)</code> crea un renglón con dos casillas y cada una recibe su propio <code>imshow</code>. La b no existe: <code>imshow</code> dibuja un solo arreglo. La c sí corre, pero las dos van al mismo par de ejes y la segunda tapa a la primera.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s4-0-q2">
+<legend><span class="num">2</span><span class="txt">Le pasas a <code>imshow</code> un arreglo de forma <code>(340, 604, 3)</code> con decimales entre 0.0 y 40.0. ¿Qué ocurre?</span></legend>
+<div class="opcion"><input type="radio" name="b2s4-0-q2" id="b2s4-0-q2-o0"><label for="b2s4-0-q2-o0"><b>a)</b> <span>Lanza un <code>ValueError</code> y no dibuja nada</span></label></div>
+<div class="opcion"><input type="radio" name="b2s4-0-q2" id="b2s4-0-q2-o1" data-ok="1"><label for="b2s4-0-q2-o1"><b>b)</b> <span>Dibuja, pero recorta al rango válido y avisa con un mensaje de &quot;Clipping input data...&quot;</span></label></div>
+<div class="opcion"><input type="radio" name="b2s4-0-q2" id="b2s4-0-q2-o2"><label for="b2s4-0-q2-o2"><b>c)</b> <span>Reescala solo los valores al rango 0.0-1.0, sin avisar</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s4-0-q2-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b, medido: el mensaje sale y dice el rango que recibió. Para decimales el rango válido es 0.0-1.0, así que todo lo que pasa de 1.0 se corta a 1.0 (por eso una imagen así sale blanca). La a supone una excepción que no llega. La c es lo que uno desearía, pero matplotlib recorta, no reescala: la conversión a <code>uint8</code> la haces tú.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 <hr />
 
 <div class="estado" data-sec="b2-4-ver-cosas-el-minimo-de-matplotlib"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
@@ -876,6 +993,36 @@ con np.linalg.norm: 5.0
 <p>Las tres dan lo mismo. La tercera, <code>np.linalg.norm(p - q)</code>, es la que aparece en
 la literatura escrita como <code>||p − q||</code> (dos barras a cada lado). <strong>Esas barras
 dobles se leen &quot;la distancia del vector que va de q a p&quot;, nada más.</strong></p>
+<p><strong>En una frase:</strong> la <strong>distancia euclidiana</strong> resta número por número, eleva al
+cuadrado, suma y saca raíz; en código es <code>np.linalg.norm(p - q)</code>.</p>
+<form class="quiz" data-quiz="b2s5-0" data-total="3">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 3 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b2s5-0-q1">
+<legend><span class="num">1</span><span class="txt">Con <code>p = np.array([1.0, 2.0, 2.0])</code> y <code>q = np.array([1.0, 6.0, 5.0])</code>, ¿qué imprime <code>print(np.linalg.norm(p - q))</code>?</span></legend>
+<div class="opcion"><input type="radio" name="b2s5-0-q1" id="b2s5-0-q1-o0"><label for="b2s5-0-q1-o0"><b>a)</b> <span><code>7.0</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s5-0-q1" id="b2s5-0-q1-o1" data-ok="1"><label for="b2s5-0-q1-o1"><b>b)</b> <span><code>5.0</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s5-0-q1" id="b2s5-0-q1-o2"><label for="b2s5-0-q1-o2"><b>c)</b> <span><code>25.0</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s5-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b, medido. Las diferencias son 0, -4 y -3; al cuadrado dan 0, 16 y 9; suman 25; la raíz de 25 es 5.0. La a suma los tamaños de las diferencias (4 + 3) sin elevar al cuadrado ni sacar raíz. La c es la suma de cuadrados, es decir, olvidar la raíz final.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s5-0-q2">
+<legend><span class="num">2</span><span class="txt">En un libro lees <code>||p − q||</code>. Eso significa...</span></legend>
+<div class="opcion"><input type="radio" name="b2s5-0-q2" id="b2s5-0-q2-o0"><label for="b2s5-0-q2-o0"><b>a)</b> <span>el valor absoluto de cada resta, uno por uno</span></label></div>
+<div class="opcion"><input type="radio" name="b2s5-0-q2" id="b2s5-0-q2-o1" data-ok="1"><label for="b2s5-0-q2-o1"><b>b)</b> <span>la distancia entre <code>p</code> y <code>q</code>, lo mismo que <code>np.linalg.norm(p - q)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s5-0-q2" id="b2s5-0-q2-o2"><label for="b2s5-0-q2-o2"><b>c)</b> <span><code>p</code> multiplicado por <code>q</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s5-0-q2-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b: las dos barras a cada lado son notación de distancia y nada más. La a devolvería una lista de números, no un solo número; la distancia siempre devuelve uno. La c es otra operación distinta que no aparece en esta sección.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s5-0-q3">
+<legend><span class="num">3</span><span class="txt">Dos datos son idénticos, y cada uno tiene 50 características. ¿Cuánto vale su distancia euclidiana?</span></legend>
+<div class="opcion"><input type="radio" name="b2s5-0-q3" id="b2s5-0-q3-o0" data-ok="1"><label for="b2s5-0-q3-o0"><b>a)</b> <span>0</span></label></div>
+<div class="opcion"><input type="radio" name="b2s5-0-q3" id="b2s5-0-q3-o1"><label for="b2s5-0-q3-o1"><b>b)</b> <span>1</span></label></div>
+<div class="opcion"><input type="radio" name="b2s5-0-q3" id="b2s5-0-q3-o2"><label for="b2s5-0-q3-o2"><b>c)</b> <span>Depende de cuántas características tengan</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s5-0-q3-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La a: si son idénticos, cada resta vale 0, la suma de cuadrados vale 0 y la raíz de 0 es 0. La b confundiría &quot;idénticos&quot; con alguna escala de similitud de 0 a 1, que no es lo que mide la distancia. La c es la trampa: 50 sumandos que valen 0 siguen sumando 0, así que el número de características no cambia el resultado.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 <hr />
 
 <div class="estado" data-sec="b2-5-distancia-como-se-mide-parecido"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
@@ -943,6 +1090,36 @@ con <code>n_init=1</code> puede caer en un óptimo local y devolver una inercia
 da 21.7359, que sube. Con <code>n_init=10</code> el efecto desaparece en la práctica.</li>
 </ul>
 <p>Se lee del atributo <code>inertia_</code>.</p>
+<p><strong>En una frase:</strong> <strong>k-means</strong> alterna asignar cada dato al centroide más cercano y
+recolocar cada centroide en el promedio de su grupo, hasta que nada cambia.</p>
+<form class="quiz" data-quiz="b2s6-0" data-total="3">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 3 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b2s6-0-q1">
+<legend><span class="num">1</span><span class="txt">Corres k-means con k = 5 sobre 3 000 datos y converge. Al terminar, cada centroide es...</span></legend>
+<div class="opcion"><input type="radio" name="b2s6-0-q1" id="b2s6-0-q1-o0"><label for="b2s6-0-q1-o0"><b>a)</b> <span>uno de los 3 000 datos, el más céntrico de su grupo</span></label></div>
+<div class="opcion"><input type="radio" name="b2s6-0-q1" id="b2s6-0-q1-o1" data-ok="1"><label for="b2s6-0-q1-o1"><b>b)</b> <span>el promedio de los datos que quedaron en su grupo</span></label></div>
+<div class="opcion"><input type="radio" name="b2s6-0-q1" id="b2s6-0-q1-o2"><label for="b2s6-0-q1-o2"><b>c)</b> <span>el dato que estaba más lejos de todos los demás</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s6-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b, y es literalmente el paso 3 del algoritmo. Medido con tres puntos de juguete: el grupo formado por <code>[2,2]</code>, <code>[2,3]</code> y <code>[3,2]</code> tiene centroide <code>[2.3333, 2.3333]</code>, que no es ninguno de los tres datos, justo lo que descarta la a. La c describe algo parecido a un dato atípico, que es lo contrario de un representante del grupo.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s6-0-q2">
+<legend><span class="num">2</span><span class="txt">La parte <code>min_j ( d(x_i, c_j) )</code> de la fórmula del curso, traducida a Python, es...</span></legend>
+<div class="opcion"><input type="radio" name="b2s6-0-q2" id="b2s6-0-q2-o0"><label for="b2s6-0-q2-o0"><b>a)</b> <span><code>max(distancia(x, c) for c in centroides)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s6-0-q2" id="b2s6-0-q2-o1"><label for="b2s6-0-q2-o1"><b>b)</b> <span><code>sum(distancia(x, c) for c in centroides)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s6-0-q2" id="b2s6-0-q2-o2" data-ok="1"><label for="b2s6-0-q2-o2"><b>c)</b> <span><code>min(distancia(x, c) for c in centroides)</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s6-0-q2-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La c: <code>min_j</code> significa &quot;de todos los centroides, quédate con la distancia más chica&quot;, es decir, la distancia del dato a <strong>su</strong> centroide. La a se quedaría con el centroide más lejano, que es el que no le tocó. La b es la Σ, que en la fórmula está afuera y recorre los datos, no los centroides.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s6-0-q3">
+<legend><span class="num">3</span><span class="txt">¿Cuál afirmación sobre la inercia es correcta?</span></legend>
+<div class="opcion"><input type="radio" name="b2s6-0-q3" id="b2s6-0-q3-o0"><label for="b2s6-0-q3-o0"><b>a)</b> <span>Sirve por sí sola para elegir k: el k correcto es el de inercia más baja</span></label></div>
+<div class="opcion"><input type="radio" name="b2s6-0-q3" id="b2s6-0-q3-o1" data-ok="1"><label for="b2s6-0-q3-o1"><b>b)</b> <span>Más baja significa grupos más compactos, y tiende a bajar al subir k, así que no basta para elegir k</span></label></div>
+<div class="opcion"><input type="radio" name="b2s6-0-q3" id="b2s6-0-q3-o2"><label for="b2s6-0-q3-o2"><b>c)</b> <span>Sirve para comparar qué conjunto de datos quedó mejor agrupado</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s6-0-q3-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b. La a se cae sola: con k igual al número de datos la inercia valdría 0, y eso no es la mejor partición. La c es el otro error frecuente: la inercia solo se compara entre corridas sobre <strong>los mismos</strong> datos. Nota que la b dice &quot;tiende a bajar&quot;, no &quot;siempre baja&quot;: con <code>n_init=1</code> k-means puede caer en un óptimo local y devolver una inercia mayor que la de un k más chico.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 <hr />
 
 <div class="estado" data-sec="b2-6-k-means"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
@@ -1030,6 +1207,36 @@ print(inspect.signature(KMeans).parameters[&quot;n_init&quot;].default)
 <p>Ese valor cambió entre versiones de scikit-learn, así que un notebook sin
 <code>n_init</code> explícito puede dar resultados distintos en otra computadora. Poner el
 número es una línea y te ahorra la discusión.</p>
+<p><strong>En una frase:</strong> los modelos de <strong>scikit-learn</strong> se crean con sus opciones, se
+ajustan con <code>fit(X)</code> y exponen lo aprendido en atributos que terminan en guion bajo.</p>
+<form class="quiz" data-quiz="b2s7-0" data-total="3">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 3 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b2s7-0-q1">
+<legend><span class="num">1</span><span class="txt">Escribes <code>km = KMeans(n_clusters=2, random_state=0, n_init=10)</code> y en la línea siguiente <code>print(km.labels_)</code>, sin llamar a <code>fit</code>. ¿Qué pasa?</span></legend>
+<div class="opcion"><input type="radio" name="b2s7-0-q1" id="b2s7-0-q1-o0"><label for="b2s7-0-q1-o0"><b>a)</b> <span>Imprime un arreglo de ceros, porque todavía no hay grupos</span></label></div>
+<div class="opcion"><input type="radio" name="b2s7-0-q1" id="b2s7-0-q1-o1" data-ok="1"><label for="b2s7-0-q1-o1"><b>b)</b> <span>Truena con <code>AttributeError: &#x27;KMeans&#x27; object has no attribute &#x27;labels_&#x27;</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s7-0-q1" id="b2s7-0-q1-o2"><label for="b2s7-0-q1-o2"><b>c)</b> <span>Ajusta el modelo por su cuenta y luego imprime las etiquetas</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s7-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b, medido. El guion bajo final marca &quot;esto lo aprendió el modelo al ajustarse&quot;: antes de <code>fit</code> el atributo simplemente no existe. La a supone un valor inicial que nunca se crea. La c supone un ajuste automático que scikit-learn no hace: <code>fit</code> se llama a mano (o usas <code>fit_predict</code>).</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s7-0-q2">
+<legend><span class="num">2</span><span class="txt">Con <code>X = np.array([[2.,2.],[2.,3.],[3.,2.],[10.,10.],[10.,11.],[11.,10.]])</code> corres <code>km = KMeans(n_clusters=2, random_state=0, n_init=10).fit(X)</code>. ¿Qué forma tiene <code>km.cluster_centers_</code>?</span></legend>
+<div class="opcion"><input type="radio" name="b2s7-0-q2" id="b2s7-0-q2-o0" data-ok="1"><label for="b2s7-0-q2-o0"><b>a)</b> <span><code>(2, 2)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s7-0-q2" id="b2s7-0-q2-o1"><label for="b2s7-0-q2-o1"><b>b)</b> <span><code>(6, 2)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s7-0-q2" id="b2s7-0-q2-o2"><label for="b2s7-0-q2-o2"><b>c)</b> <span><code>(2, 6)</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s7-0-q2-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La a, medido. Hay una fila por centroide (k = 2) y una columna por característica (2 coordenadas). La b es la forma de <code>X</code>, no la de los centroides; ojo, <code>km.labels_</code> sí tiene una entrada por dato, con forma <code>(6,)</code>. La c intercambia los ejes.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s7-0-q3">
+<legend><span class="num">3</span><span class="txt"><code>n_init=10</code> hace que KMeans...</span></legend>
+<div class="opcion"><input type="radio" name="b2s7-0-q3" id="b2s7-0-q3-o0"><label for="b2s7-0-q3-o0"><b>a)</b> <span>corra exactamente 10 iteraciones y se detenga</span></label></div>
+<div class="opcion"><input type="radio" name="b2s7-0-q3" id="b2s7-0-q3-o1" data-ok="1"><label for="b2s7-0-q3-o1"><b>b)</b> <span>reinicie 10 veces con tapitas iniciales distintas y se quede con la corrida de menor inercia</span></label></div>
+<div class="opcion"><input type="radio" name="b2s7-0-q3" id="b2s7-0-q3-o2"><label for="b2s7-0-q3-o2"><b>c)</b> <span>forme 10 grupos</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s7-0-q3-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b. La a confunde reinicios con iteraciones: cuántas veces se mueven las tapitas dentro de una corrida lo decide la convergencia (y el tope <code>max_iter</code>), no <code>n_init</code>. La c confunde <code>n_init</code> con <code>n_clusters</code>, que es el que fija k.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 <hr />
 
 <div class="estado" data-sec="b2-7-el-patron-fit-predict-de-scikit-learn"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
@@ -1061,6 +1268,28 @@ tipo &quot;el cluster 2 es el importante&quot; sin describir <em>qué contiene</
 <p>En datos reales y grandes, además, cambiar la semilla puede llevar a un resultado
 <strong>parecido pero no idéntico</strong> (los centroides se mueven un poco). Otra razón para
 fijarla y reportarla.</p>
+<p><strong>En una frase:</strong> la <strong>semilla</strong> (<code>random_state</code>) fija el azar para poder
+reproducir, y los números de etiqueta no significan nada por sí mismos.</p>
+<form class="quiz" data-quiz="b2s8-0" data-total="2">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 2 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b2s8-0-q1">
+<legend><span class="num">1</span><span class="txt">Sobre los puntos <code>[[2,2],[2,3],[3,2],[10,10],[10,11],[11,10]]</code>, <code>random_state=0</code> da etiquetas <code>[1 1 1 0 0 0]</code> con inercia 2.6667, y <code>random_state=5</code> da <code>[0 0 0 1 1 1]</code> con inercia 2.6667. ¿Qué concluyes?</span></legend>
+<div class="opcion"><input type="radio" name="b2s8-0-q1" id="b2s8-0-q1-o0" data-ok="1"><label for="b2s8-0-q1-o0"><b>a)</b> <span>Los montones son los mismos; lo único que cambió es cuál se llama 0 y cuál 1</span></label></div>
+<div class="opcion"><input type="radio" name="b2s8-0-q1" id="b2s8-0-q1-o1"><label for="b2s8-0-q1-o1"><b>b)</b> <span>El segundo agrupamiento es peor, porque invirtió el orden de los grupos</span></label></div>
+<div class="opcion"><input type="radio" name="b2s8-0-q1" id="b2s8-0-q1-o2"><label for="b2s8-0-q1-o2"><b>c)</b> <span>Una de las dos corridas falló y hay que descartarla</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s8-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La a, medido: misma inercia, mismos tres puntos juntos abajo y mismos tres juntos arriba, solo con el nombre del grupo intercambiado. La b le da significado al número de etiqueta, que no lo tiene. La c es falsa: ninguna corrida falló, las dos convergieron a la misma partición.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s8-0-q2">
+<legend><span class="num">2</span><span class="txt">En tu reporte escribes &quot;el cluster 2 concentra los pixeles importantes&quot;. ¿Cuál es el problema?</span></legend>
+<div class="opcion"><input type="radio" name="b2s8-0-q2" id="b2s8-0-q2-o0"><label for="b2s8-0-q2-o0"><b>a)</b> <span>Ninguno, es una conclusión perfectamente válida</span></label></div>
+<div class="opcion"><input type="radio" name="b2s8-0-q2" id="b2s8-0-q2-o1" data-ok="1"><label for="b2s8-0-q2-o1"><b>b)</b> <span>El número de etiqueta no es estable entre corridas: hay que describir <strong>qué contiene</strong> ese cluster</span></label></div>
+<div class="opcion"><input type="radio" name="b2s8-0-q2" id="b2s8-0-q2-o2"><label for="b2s8-0-q2-o2"><b>c)</b> <span>Debería decir &quot;cluster 3&quot;, que es el que suele salir</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s8-0-q2-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b: tu cluster 2 puede ser el 5 de quien te califica, así que la frase deja de significar algo en cuanto alguien vuelve a correr el notebook. La a ignora esa inestabilidad. La c la empeora: cambiar el número no arregla nada, porque ningún número es &quot;el que suele salir&quot;.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 <hr />
 
 <div class="estado" data-sec="b2-8-la-semilla-random-state-por-que-siempre-se-fij"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
@@ -1080,6 +1309,28 @@ resultados.</li>
 <p>Consecuencia práctica: un notebook con puras celdas de código <strong>no cumple</strong>. Cada
 resultado debe ir acompañado de texto que explique qué hiciste y por qué. Ese
 texto va en celdas <em>Markdown</em> del notebook.</p>
+<p><strong>En una frase:</strong> la entrega es un <strong>PDF</strong> producido con <code>quarto render</code> desde un
+notebook, con texto que explique resultados y código, y sin tardías.</p>
+<form class="quiz" data-quiz="b2s9-0" data-total="2">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 2 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b2s9-0-q1">
+<legend><span class="num">1</span><span class="txt">Tu notebook corre completo, las figuras salen bien, pero no tiene ni una celda de texto. Según las reglas oficiales de la materia...</span></legend>
+<div class="opcion"><input type="radio" name="b2s9-0-q1" id="b2s9-0-q1-o0"><label for="b2s9-0-q1-o0"><b>a)</b> <span>Cumple: lo que se evalúa son los resultados, y son correctos</span></label></div>
+<div class="opcion"><input type="radio" name="b2s9-0-q1" id="b2s9-0-q1-o1"><label for="b2s9-0-q1-o1"><b>b)</b> <span>Cumple si le pones comentarios con <code>#</code> dentro de las celdas de código</span></label></div>
+<div class="opcion"><input type="radio" name="b2s9-0-q1" id="b2s9-0-q1-o2" data-ok="1"><label for="b2s9-0-q1-o2"><b>c)</b> <span>No cumple: se exige texto explicando el contenido y las líneas de código usadas</span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s9-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La c, y es requisito del profesor, no sugerencia nuestra. La a ignora la mitad del criterio. La b es la trampa cómoda: los comentarios <code>#</code> viven dentro del código, y lo que se pide es texto en celdas Markdown que explique qué hiciste y por qué.</div>
+</fieldset>
+<fieldset class="pregunta" id="b2s9-0-q2">
+<legend><span class="num">2</span><span class="txt">¿Con qué comando se produce el PDF que se entrega?</span></legend>
+<div class="opcion"><input type="radio" name="b2s9-0-q2" id="b2s9-0-q2-o0"><label for="b2s9-0-q2-o0"><b>a)</b> <span><code>jupyter nbconvert mi_tarea.ipynb --to pdf</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s9-0-q2" id="b2s9-0-q2-o1" data-ok="1"><label for="b2s9-0-q2-o1"><b>b)</b> <span><code>quarto render mi_tarea.ipynb --to pdf</code></span></label></div>
+<div class="opcion"><input type="radio" name="b2s9-0-q2" id="b2s9-0-q2-o2"><label for="b2s9-0-q2-o2"><b>c)</b> <span>Guardar el notebook y cambiarle la extensión a <code>.pdf</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b2s9-0-q2-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b es la que indica el repositorio del profesor. La a es una herramienta real pero no la que pide la materia. La c ni siquiera produce un PDF: renombrar un archivo no cambia su formato, y lo que subirías sería un <code>.ipynb</code> disfrazado.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 <hr />
 
 <div class="estado" data-sec="b2-9-como-se-entrega-en-esta-materia"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
@@ -1180,7 +1431,7 @@ texto va en celdas <em>Markdown</em> del notebook.</p>
 <div class="bn" aria-hidden="true">3</div><div>
 <h2>Trampas medidas</h2>
 <div class="meta">
-<span class="chip">17 min estimados</span>
+<span class="chip">31 min estimados</span>
 <span class="chip q">&#9733; Ruta práctica</span>
 <label class="tiempo">tu tiempo real <input class="real" type="number" min="0" step="1" inputmode="numeric" id="real-b3" name="real-b3" data-bloque="3" aria-label="tiempo real del bloque 3 en minutos"> min</label>
 </div></div></div>
@@ -1204,6 +1455,20 @@ variables por separado justamente porque son cosas distintas.</li>
 <code>IndexError: arrays used as indices must be of integer (or boolean) type</code>.
 Los centroides son decimales; no pueden ser índices.</li>
 </ul>
+<p><strong>En una frase:</strong> <code>X_km</code> guarda <strong>una etiqueta entera por pixel</strong>, no colores: la
+paleta vive en <code>centroids</code>, con una fila por grupo.</p>
+<form class="quiz" data-quiz="b3s1-0" data-total="1">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 1 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b3s1-0-q1">
+<legend><span class="num">1</span><span class="txt">Corres k-means con k = 5 sobre una foto de 500 × 400 pixeles (ancho × alto) aplanada. ¿Qué formas tienen <code>X_km</code> (las etiquetas) y <code>centroids</code>?</span></legend>
+<div class="opcion"><input type="radio" name="b3s1-0-q1" id="b3s1-0-q1-o0"><label for="b3s1-0-q1-o0"><b>a)</b> <span><code>X_km</code> = <code>(5,)</code> y <code>centroids</code> = <code>(200000, 3)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b3s1-0-q1" id="b3s1-0-q1-o1" data-ok="1"><label for="b3s1-0-q1-o1"><b>b)</b> <span><code>X_km</code> = <code>(200000,)</code> y <code>centroids</code> = <code>(5, 3)</code></span></label></div>
+<div class="opcion"><input type="radio" name="b3s1-0-q1" id="b3s1-0-q1-o2"><label for="b3s1-0-q1-o2"><b>c)</b> <span><code>X_km</code> = <code>(200000, 3)</code> y <code>centroids</code> = <code>(5, 3)</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b3s1-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b: hay una etiqueta por pixel (500 × 400 = 200 000, medido) y un color RGB por grupo (5 filas de 3 canales). La a invierte los papeles: <code>X_km</code> no tiene un valor por grupo, tiene un valor por pixel, y los 5 grupos están en los <strong>valores</strong> de <code>X_km</code>, no en su tamaño. La c es la trampa exacta de esta sección: le pone tres canales a <code>X_km</code>, o sea colores, y entonces <code>centroids[X_km]</code> deja de tener sentido.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 
 <div class="estado" data-sec="b3-trampa-1-x-km-tiene-205-360-numeros-no-8"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
 <h3 id="b3-trampa-2-n-init-10-no-es-el-valor-por-omision">Trampa 2 · <code>n_init=10</code> no es el valor por omisión</h3>
@@ -1243,6 +1508,20 @@ inercia <em>peor</em> que la corrida única con <code>random_state=0</code>
 (<code>entregas/aprendizaje-no-supervisado/LECCIONES-entregas-ANSup.md</code> líneas 53-54).
 Así que escríbelo explícito —te ahorra que tu notebook dé otro número en la
 computadora de quien te califica— pero no lo vendas como garantía.</p>
+<p><strong>En una frase:</strong> el valor por omisión de <strong><code>n_init</code></strong> en scikit-learn 1.6 es
+<code>&quot;auto&quot;</code> —un solo intento con <code>k-means++</code>—, así que escríbelo explícito.</p>
+<form class="quiz" data-quiz="b3s2-0" data-total="1">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 1 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b3s2-0-q1">
+<legend><span class="num">1</span><span class="txt">En scikit-learn 1.6, ¿qué imprime <code>print(inspect.signature(KMeans).parameters[&quot;n_init&quot;].default)</code>?</span></legend>
+<div class="opcion"><input type="radio" name="b3s2-0-q1" id="b3s2-0-q1-o0"><label for="b3s2-0-q1-o0"><b>a)</b> <span><code>10</code></span></label></div>
+<div class="opcion"><input type="radio" name="b3s2-0-q1" id="b3s2-0-q1-o1"><label for="b3s2-0-q1-o1"><b>b)</b> <span><code>1</code></span></label></div>
+<div class="opcion"><input type="radio" name="b3s2-0-q1" id="b3s2-0-q1-o2" data-ok="1"><label for="b3s2-0-q1-o2"><b>c)</b> <span><code>auto</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b3s2-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La c, medido. La a es lo que casi todo el mundo cree, y es justo la trampa. La b se acerca al efecto —con <code>init=&quot;k-means++&quot;</code> ese <code>&quot;auto&quot;</code> significa un solo intento— pero lo que la firma imprime es la cadena <code>auto</code>, no el número. Como ese valor cambió entre versiones, escribir <code>n_init=10</code> explícito es lo que hace que tu notebook dé el mismo número en otra computadora.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 
 <div class="estado" data-sec="b3-trampa-2-n-init-10-no-es-el-valor-por-omision"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
 <h3 id="b3-trampa-3-random-state-0-no-es-la-mejor-solucion">Trampa 3 · <code>random_state=0</code> no es &quot;la mejor solución&quot;</h3>
@@ -1260,6 +1539,20 @@ se mueven a lo sumo 2.31 unidades por canal, en una escala de 0 a 255— sino
 de la mía, y ninguna conclusión debe apoyarse en el número de etiqueta sin
 describir qué contiene (<a class="ref" href="#b2-8-la-semilla-random-state-por-que-siempre-se-fij">«El tema» §8</a>).</li>
 </ul>
+<p><strong>En una frase:</strong> ninguna semilla es <strong>&quot;la mejor&quot;</strong>: <code>random_state=7</code> batió a <code>0</code>
+en esta práctica, y un barrido de 40 puso el mínimo en <code>27</code>.</p>
+<form class="quiz" data-quiz="b3s3-0" data-total="1">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 1 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b3s3-0-q1">
+<legend><span class="num">1</span><span class="txt">Tu corrida con <code>random_state=0</code> da inercia 5 210.4 y la de un compañero con <code>random_state=3</code> da 5 198.7, sobre los mismos datos y el mismo k. ¿Cómo se escribe eso en el reporte?</span></legend>
+<div class="opcion"><input type="radio" name="b3s3-0-q1" id="b3s3-0-q1-o0"><label for="b3s3-0-q1-o0"><b>a)</b> <span>&quot;<code>random_state=0</code> encontró la mejor solución&quot;</span></label></div>
+<div class="opcion"><input type="radio" name="b3s3-0-q1" id="b3s3-0-q1-o1"><label for="b3s3-0-q1-o1"><b>b)</b> <span>&quot;Las dos son igual de buenas, porque la inercia no se puede comparar&quot;</span></label></div>
+<div class="opcion"><input type="radio" name="b3s3-0-q1" id="b3s3-0-q1-o2" data-ok="1"><label for="b3s3-0-q1-o2"><b>c)</b> <span>&quot;La corrida con <code>random_state=3</code> encontró <strong>una</strong> solución más compacta; ninguna de las dos es la mejor garantizada&quot;</span></label></div>
+<label class="seguro"><input type="checkbox" name="b3s3-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La c. Más baja es más compacta, así que la de 5 198.7 ganó esta comparación, y eso ya tumba la a con solo dos semillas. La b confunde dos reglas: la inercia <strong>no</strong> se compara entre conjuntos de datos distintos, pero sí entre corridas sobre los mismos datos, que es exactamente este caso. Y &quot;una solución mejor&quot; no es &quot;la mejor&quot;: aquí un barrido de 40 semillas movió el mínimo a <code>random_state=27</code>.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 
 <div class="estado" data-sec="b3-trampa-3-random-state-0-no-es-la-mejor-solucion"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
 <h3 id="b3-trampa-4-astype-uint8-trunca-no-redondea">Trampa 4 · <code>astype(&quot;uint8&quot;)</code> trunca, no redondea</h3>
@@ -1283,6 +1576,20 @@ iguales? False
 <p>Dos de los tres canales bajan una unidad. El hex correcto para reportar es el
 truncado, <strong><code>#70734F</code></strong>, porque es el que produce el código literal del
 enunciado; lo que no puedes escribir es que ese hex sea el centroide redondeado.</p>
+<p><strong>En una frase:</strong> <strong><code>astype(&quot;uint8&quot;)</code></strong> corta la parte decimal en vez de redondear,
+así que el hex que publiques puede bajar una unidad por canal.</p>
+<form class="quiz" data-quiz="b3s4-0" data-total="1">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 1 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b3s4-0-q1">
+<legend><span class="num">1</span><span class="txt">Un centroide vale <code>c = np.array([63.802, 128.61, 200.49])</code>. ¿Qué imprime <code>c.astype(&quot;uint8&quot;)</code> y qué hex le corresponde?</span></legend>
+<div class="opcion"><input type="radio" name="b3s4-0-q1" id="b3s4-0-q1-o0"><label for="b3s4-0-q1-o0"><b>a)</b> <span><code>[ 64 129 200]</code> → <code>#4081C8</code></span></label></div>
+<div class="opcion"><input type="radio" name="b3s4-0-q1" id="b3s4-0-q1-o1"><label for="b3s4-0-q1-o1"><b>b)</b> <span><code>[ 64 129 201]</code> → <code>#4181C9</code></span></label></div>
+<div class="opcion"><input type="radio" name="b3s4-0-q1" id="b3s4-0-q1-o2" data-ok="1"><label for="b3s4-0-q1-o2"><b>c)</b> <span><code>[ 63 128 200]</code> → <code>#3F80C8</code></span></label></div>
+<label class="seguro"><input type="checkbox" name="b3s4-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La c, medido: <code>astype</code> trunca, así que 63.802 → 63, 128.61 → 128 y 200.49 → 200. La a es el resultado de <code>np.round(c).astype(&quot;uint8&quot;)</code>, que sí redondea: dos canales suben una unidad. La b redondea todo hacia arriba, cosa que ni <code>astype</code> ni <code>round</code> hacen (200.49 redondea a 200). Reporta el truncado, porque es lo que produce el código literal del enunciado, pero no lo llames &quot;el centroide redondeado&quot;.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 
 <div class="estado" data-sec="b3-trampa-4-astype-uint8-trunca-no-redondea"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
 <h3 id="b3-trampa-5-sin-reshape-s-no-hay-error-hay-una-tira">Trampa 5 · Sin <code>reshape(s)</code> no hay error, hay una tira de tres pixeles de ancho</h3>
@@ -1316,6 +1623,20 @@ mientras <strong>todos</strong> los canales de tus centroides pasen de 1.0 —lo
 foto, donde son promedios en la escala 0-255— el blanco es total. Si tu figura
 sale en blanco, no está rota la imagen: falta el <code>astype</code>.</li>
 </ul>
+<p><strong>En una frase:</strong> sin <strong><code>.reshape(s)</code></strong> matplotlib no falla: pinta una tira
+<code>viridis</code> de 205 360 renglones, y sin <code>.astype(&quot;uint8&quot;)</code> la figura sale en blanco.</p>
+<form class="quiz" data-quiz="b3s5-0" data-total="1">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 1 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b3s5-0-q1">
+<legend><span class="num">1</span><span class="txt">Le pasas a <code>imshow</code> el arreglo <code>centroids[X_km]</code>, de forma <code>(205360, 3)</code>, sin <code>.reshape(s)</code>. ¿Qué ocurre?</span></legend>
+<div class="opcion"><input type="radio" name="b3s5-0-q1" id="b3s5-0-q1-o0" data-ok="1"><label for="b3s5-0-q1-o0"><b>a)</b> <span>No hay excepción ni warning: matplotlib lo pinta como tabla con su mapa de color <code>viridis</code>, y lo delata el eje vertical llegando a 200000</span></label></div>
+<div class="opcion"><input type="radio" name="b3s5-0-q1" id="b3s5-0-q1-o1"><label for="b3s5-0-q1-o1"><b>b)</b> <span>Lanza <code>ValueError: invalid shape for image data</code> y no dibuja</span></label></div>
+<div class="opcion"><input type="radio" name="b3s5-0-q1" id="b3s5-0-q1-o2"><label for="b3s5-0-q1-o2"><b>c)</b> <span>Dibuja la foto igual, porque numpy recupera el alto y el ancho originales</span></label></div>
+<label class="seguro"><input type="checkbox" name="b3s5-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La a, medido: <code>imshow</code> de un arreglo <code>(N, 3)</code> no lanza nada; lo lee como 205 360 filas por 3 columnas de valores sueltos y les aplica el mapa de color por omisión, que es <code>viridis</code>. Por eso ésta es la peor trampa de programación: no avisa. La b es lo que uno esperaría y no pasa. La c es falsa: <code>reshape</code> nunca es automático, los números están ahí pero nadie sabe que venían de una foto de 340 × 604.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 
 <div class="estado" data-sec="b3-trampa-5-sin-reshape-s-no-hay-error-hay-una-tira"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
 <h3 id="b3-trampa-6-explicar-un-porque-sin-medir-el-porque">Trampa 6 · Explicar un &quot;porque&quot; sin medir el porque</h3>
@@ -1334,6 +1655,20 @@ cielo detrás de los árboles&quot; no existía: <strong>0.031 %</strong> de pix
 una cifra al lado se defiende; una frase con una intuición al lado se cae en
 cuanto alguien la mide.</li>
 </ul>
+<p><strong>En una frase:</strong> ante un <strong>&quot;porque&quot;</strong>, mide el porque: &quot;son demasiado pocos&quot; se
+cayó con 15.85 % de amarillentos frente a un grupo de 2.48 %.</p>
+<form class="quiz" data-quiz="b3s6-0" data-total="1">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 1 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b3s6-0-q1">
+<legend><span class="num">1</span><span class="txt">Quieres escribir &quot;el grupo rojizo salió chico porque casi no hay pixeles rojos en la foto&quot;. ¿Qué haces antes de escribirlo?</span></legend>
+<div class="opcion"><input type="radio" name="b3s6-0-q1" id="b3s6-0-q1-o0"><label for="b3s6-0-q1-o0"><b>a)</b> <span>Nada: se ve a simple vista mirando la foto</span></label></div>
+<div class="opcion"><input type="radio" name="b3s6-0-q1" id="b3s6-0-q1-o1" data-ok="1"><label for="b3s6-0-q1-o1"><b>b)</b> <span>Cuentas qué porcentaje de pixeles son rojizos y pones la cifra al lado de la frase</span></label></div>
+<div class="opcion"><input type="radio" name="b3s6-0-q1" id="b3s6-0-q1-o2"><label for="b3s6-0-q1-o2"><b>c)</b> <span>Cambias la frase a &quot;quizá el grupo rojizo salió chico&quot; para no comprometerte</span></label></div>
+<label class="seguro"><input type="checkbox" name="b3s6-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La b, y es la trampa que ya costó puntos: la intuición &quot;son demasiado pocos&quot; se midió y salió al revés (15.85 % de pixeles amarillentos frente a un grupo real de 2.48 %). La a supone que el ojo mide, y de ahí salió también el &quot;cielo detrás de los árboles&quot; que resultó ser 0.031 % de pixeles azules. La c no mide nada: suavizar una frase sin evidencia la deja igual de indefendible, solo que más vaga.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 
 <div class="estado" data-sec="b3-trampa-6-explicar-un-porque-sin-medir-el-porque"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
 <h3 id="b3-trampa-7-un-notebook-de-puras-celdas-de-codigo-n">Trampa 7 · Un notebook de puras celdas de código no cumple</h3>
@@ -1351,6 +1686,20 @@ siempre lo que imprimió <em>tu</em> corrida, con tus versiones y tu semilla esc
 al lado. Si copias una cifra de aquí y tu celda imprime otra, el que tiene
 razón es tu celda.</li>
 </ul>
+<p><strong>En una frase:</strong> el PDF exige <strong>texto explicativo</strong> junto al código, se genera
+con <code>quarto render</code>, y las cifras que reportas son las de tu corrida.</p>
+<form class="quiz" data-quiz="b3s7-0" data-total="1">
+<div class="quiz-cab"><output class="avance" aria-live="polite">0 de 1 respondidas</output><div class="quiz-prog" aria-hidden="true"><i></i></div></div>
+<fieldset class="pregunta" id="b3s7-0-q1">
+<legend><span class="num">1</span><span class="txt">Copias del apunte la inercia 91 332 527.3237, pero tu celda imprime 91 332 527.3241. ¿Qué reportas?</span></legend>
+<div class="opcion"><input type="radio" name="b3s7-0-q1" id="b3s7-0-q1-o0" data-ok="1"><label for="b3s7-0-q1-o0"><b>a)</b> <span>La de tu celda, con tus versiones y tu semilla anotadas al lado</span></label></div>
+<div class="opcion"><input type="radio" name="b3s7-0-q1" id="b3s7-0-q1-o1"><label for="b3s7-0-q1-o1"><b>b)</b> <span>La del apunte, que ya viene verificada</span></label></div>
+<div class="opcion"><input type="radio" name="b3s7-0-q1" id="b3s7-0-q1-o2"><label for="b3s7-0-q1-o2"><b>c)</b> <span>El promedio de las dos, para no contradecir a nadie</span></label></div>
+<label class="seguro"><input type="checkbox" name="b3s7-0-q1-seg"> estaba seguro</label>
+<div class="explicacion" hidden>La a. Las cifras de estos apuntes se midieron en Linux y no coinciden con las de la máquina donde se generó la entrega, un macOS ARM: si copias una cifra de aquí y tu celda imprime otra, el que tiene razón es tu celda. La b reporta un número que tu notebook nunca produjo, y cualquiera que lo corra lo detecta. La c es peor todavía: inventa un valor que no imprimió ninguna corrida.</div>
+</fieldset>
+<div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
+</form>
 
 <div class="estado" data-sec="b3-trampa-7-un-notebook-de-puras-celdas-de-codigo-n"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
 <h3 id="b3-tabla-resumen">Tabla resumen</h3>
