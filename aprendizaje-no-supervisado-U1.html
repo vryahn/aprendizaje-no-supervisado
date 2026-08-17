@@ -128,7 +128,7 @@ padding:.28rem .7rem;background:var(--surface);white-space:nowrap;
 transition:color .18s ease,border-color .18s ease,background .18s ease}
 nav.saltos a:hover{border-color:var(--accent);color:var(--accent)}
 nav.saltos a.activo{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
-body.solo-quiz nav.saltos a.fuera{opacity:.45}
+nav.saltos a.fuera{opacity:.45}
 .hero{display:block;margin:0 0 2rem;padding:0 0 1.9rem;position:relative}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;
 background:var(--hair);opacity:.85}
@@ -147,8 +147,12 @@ border:1px solid var(--border);color:var(--text-dim)}
 .pill.urgente b{color:var(--mal)}
 .pill.ok{background:var(--accent-soft);color:var(--accent)}
 .pill.ok b{color:var(--accent)}
-.rutas{display:grid;grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));gap:.75rem;
-margin:1.6rem 0 0}
+ol.hitos{list-style:none;display:flex;flex-wrap:wrap;gap:.75rem;margin:1.6rem 0 0;padding:0}
+ol.hitos li{flex:1 1 13.5rem;margin:0;display:flex}
+ol.hitos li>.ruta{flex:1}
+ol.hitos .av{display:block;font-size:.72rem;color:var(--text-dim);margin-top:.4rem}
+ol.hitos li.urgente .cuenta{color:var(--mal)}
+ol.hitos li.ok .cuenta{color:var(--accent)}
 .ruta{position:relative;overflow:hidden;text-align:left;font:inherit;color:inherit;cursor:pointer;
 border:1px solid var(--border);background:var(--surface);border-radius:var(--r);
 padding:.95rem 1.05rem;box-shadow:var(--shadow);
@@ -190,12 +194,21 @@ place-items:center;font-family:var(--serif);font-size:.95rem;font-weight:600;
 background:var(--accent-soft);color:var(--accent);border:1px solid var(--border)}
 ol.sesiones .dur{font-family:var(--serif);font-weight:600;font-size:1.05rem;letter-spacing:-.01em}
 ol.sesiones .det{display:block;font-size:.82rem;color:var(--text-dim);line-height:1.45}
+ol.sesiones li.fuera{opacity:.5}
+h3.plan-hito{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.1em;
+text-transform:uppercase;color:var(--text-dim);margin:1.5rem 0 .6rem;scroll-margin-top:7rem}
+h3.plan-hito:first-of-type{margin-top:0}
+h3.plan-hito small{font-size:.9em;font-weight:600;color:var(--mal);text-transform:none;
+letter-spacing:.02em}
 
 section.bloque{position:relative;background:var(--surface);border:1px solid var(--border);
 border-radius:var(--r);padding:1.4rem 1.4rem 1.7rem;margin:0 0 1rem;
 box-shadow:var(--shadow);scroll-margin-top:7rem;transition:opacity .25s,filter .25s}
-body.solo-quiz section.bloque.fuera{opacity:.45;filter:saturate(.4)}
-body.solo-quiz section.bloque.fuera:hover{opacity:.95;filter:none}
+section.bloque.fuera{opacity:.45;filter:saturate(.4)}
+section.bloque.fuera:hover{opacity:.95;filter:none}
+.sec{transition:opacity .25s,filter .25s}
+.sec.fuera{opacity:.45;filter:saturate(.4)}
+.sec.fuera:hover{opacity:.95;filter:none}
 .cab{display:flex;gap:.95rem;align-items:flex-start;border-bottom:1px solid var(--border);
 padding-bottom:.95rem;margin-bottom:1.15rem}
 .cab .bn{flex:none;width:2.6rem;height:2.6rem;border-radius:999px;background:var(--accent-soft);
@@ -243,6 +256,18 @@ border:1px solid var(--border);box-shadow:var(--shadow)}
 padding:2.1rem .95rem .95rem;font:.8rem/1.55 var(--mono)}
 .caja::before{content:attr(data-lang);position:absolute;top:0;left:0;z-index:1;
 font:700 .6rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:.6rem .85rem}
+.pred-caja{margin:1.3rem 0}
+.pred-caja.hecha{border-left:3px solid var(--ok);border-radius:0 12px 12px 0;
+padding-left:.85rem}
+.pred-lab{display:block;font-size:.82rem;color:var(--text-dim)}
+.pred-mia,#prog-json{display:block;width:100%;box-sizing:border-box;margin:.35rem 0 .6rem;
+padding:.6rem .8rem;font:.88rem/1.5 var(--sans);color:var(--text);background:var(--surface);
+border:1px solid var(--border-2);border-radius:12px;resize:vertical}
+.pred-caja>details.pred{margin:0}
+a.traza{display:block;text-align:right;text-decoration:none;font:600 .68rem var(--sans);
+letter-spacing:.04em;padding:.1rem .95rem .55rem;color:#D9A567}
+a.traza:hover{text-decoration:underline}
+.estado .frase{flex-basis:100%;width:100%;margin:.5rem 0 0;font-size:.9rem}
 details.pred{margin:1.3rem 0}
 details.pred>summary{cursor:pointer;list-style:none;font:600 .8rem var(--sans);
 color:#8FBF9F;background:#1A1416;border:1px solid #2B2226;border-radius:12px;padding:.7rem .95rem}
@@ -431,7 +456,7 @@ border-radius:2px}
 <div class="acciones"><button type="button" id="tema" class="icono" aria-label="Cambiar tema">&#9790;</button></div></div>
 <nav class="saltos" aria-label="Bloques de la unidad">
 <a href="#b1">1 · Qué vas a poder hacer al terminar</a>
-<a href="#b2" class="fuera">2 · El tema</a>
+<a href="#b2">2 · El tema</a>
 <a href="#b3">3 · Trampas medidas</a>
 <a href="#b4">4 · Práctica 1A · k-means en una imagen</a>
 </nav></header>
@@ -443,30 +468,32 @@ border-radius:2px}
 <div class="unum"><small>UNIDAD</small>1</div>
 <div>
 <h1>Algoritmos de agrupamiento</h1>
-<p class="sub">Guía de estudio: cuatro bloques, con su tiempo estimado y los de la ruta práctica marcados.</p>
+<p class="sub">Guía de estudio: cuatro bloques, con su tiempo estimado.</p>
 <div class="pills">
 <span class="pill" data-iso="2026-08-14" title="Práctica 1A vence el 2026-08-14.">Práctica 1A · 14 de agosto · <b class="cuenta"></b></span>
 <span class="pill ok" id="mejor" hidden>Tu mejor quiz: <b></b></span>
 </div></div></div>
-<div class="rutas" role="group" aria-label="Elige tu ruta de estudio">
-<button type="button" class="ruta" data-ruta="quiz" aria-pressed="false"><span class="et">Ruta práctica</span><span class="t">2 h 04 min</span><span class="d">Bloques 1, 3, 4 — el camino corto</span></button>
-<button type="button" class="ruta" data-ruta="completa" aria-pressed="true"><span class="et">Ruta completa</span><span class="t">4 h 24 min</span><span class="d">Los cuatro bloques, para comprender y aplicar</span></button>
-</div>
+<ol class="hitos" role="group" aria-label="Elige hasta dónde estudiar">
+<li data-iso="2026-08-14"><button type="button" class="ruta" data-hito="1" aria-pressed="false" title="Práctica 1A · k-means en una imagen"><span class="et">1A</span><span class="t">4 h 24 min</span><span class="d">vence 14 de agosto · <b class="cuenta"></b> · 32 secciones</span><span class="av"></span></button></li>
+</ol>
+<p class="nota">Cada paso incluye todo lo del anterior. Lo que no entra en el paso elegido se atenúa; puedes leerlo igual.</p>
 <details class="nota"><summary>Cómo se calculan estos tiempos, y qué no prometen</summary><p>Los calcula el generador de esta guía contando lo que hay en cada bloque, con tasas <b>provisionales</b>: 100 palabras/min de prosa nueva, 160 de repaso, 4 min por bloque de código, 1 min por bloque de salida, 2 min por figura y 1.5 min por pregunta de quiz. Son una conjetura declarada, no una medición. Miden el tiempo de <b>recorrer</b> el material: no incluyen releer lo que no cuajó, ni las lecturas del curso, ni pelearse con un error de instalación. Anota tu tiempo real en cada bloque (se guarda en este navegador, sin cuentas ni servidor) y las unidades siguientes se estimarán con <i>tu</i> tasa.</p></details>
+<details class="nota" id="progreso-io"><summary>Llevar mi progreso a otro dispositivo</summary><p>Todo se guarda en este navegador. Copia este texto y pégalo en el otro dispositivo, en esta misma casilla, y pulsa «Importar».</p><textarea id="prog-json" rows="3" aria-label="Progreso en JSON"></textarea><p><button type="button" class="calificar" id="prog-copiar">Copiar</button> <button type="button" class="reiniciar" id="prog-importar">Importar</button> <span class="nota" id="prog-msg"></span></p></details>
 <p class="nota" id="real-total"></p>
 <p class="nota" id="reanudar" hidden>Ibas en <a href="#"></a>. <span class="cuenta-ok"></span></p>
 <p class="nota" id="para-repasar" hidden>Marcadas para repasar: <span></span></p>
 <p class="repaso-cta"><button type="button" class="calificar" id="repaso-btn" hidden>Repaso rápido · 10 preguntas</button><span class="nota" id="repaso-info"></span></p>
 </section>
 <section class="plan">
-<h2>Plan de estudio · 6 sesiones de 22-58 min (ruta completa)</h2>
+<h2>Plan de estudio · 6 sesiones de 22-58 min (por hito)</h2>
+<h3 class="plan-hito" data-h="1">1A · Práctica 1A · k-means en una imagen · vence 14 de agosto</h3>
 <ol class="sesiones">
-<li data-sesion="1"><span class="n">1</span><div><span class="dur">22 min</span><span class="det">desde <a href="#b1-intro">Qué vas a poder hacer al terminar</a> hasta 2. Agrupar (clustering): la idea antes del término · 7 secciones</span></div><span class="fecha"></span></li>
-<li data-sesion="2"><span class="n">2</span><div><span class="dur">46 min</span><span class="det"><a href="#b2-3-los-datos-son-una-tabla-de-numeros-el-arreglo-">3. Los datos son una tabla de números: el arreglo de numpy</a> · 1 secciones</span></div><span class="fecha"></span></li>
-<li data-sesion="3"><span class="n">3</span><div><span class="dur">41 min</span><span class="det">desde <a href="#b2-4-ver-cosas-el-minimo-de-matplotlib">4. Ver cosas: el mínimo de matplotlib</a> hasta 6. k-means · 3 secciones</span></div><span class="fecha"></span></li>
-<li data-sesion="4"><span class="n">4</span><div><span class="dur">48 min</span><span class="det">desde <a href="#b2-7-el-patron-fit-predict-de-scikit-learn">7. El patrón fit / predict de scikit-learn</a> hasta Trampa 3 · <code>random_state=0</code> no es &quot;la mejor solución&quot; · 8 secciones</span></div><span class="fecha"></span></li>
-<li data-sesion="5"><span class="n">5</span><div><span class="dur">58 min</span><span class="det">desde <a href="#b3-trampa-4-astype-uint8-trunca-no-redondea">Trampa 4 · <code>astype(&quot;uint8&quot;)</code> trunca, no redondea</a> hasta 5. Paso 1 — aplicar k-means con k = 8 · 11 secciones</span></div><span class="fecha"></span></li>
-<li data-sesion="6"><span class="n">6</span><div><span class="dur">49 min</span><span class="det">desde <a href="#b4-6-paso-2-imprimir-los-centroides-y-dibujar-la-pa">6. Paso 2 — imprimir los centroides y dibujar la paleta</a> hasta Apéndice · Solución de referencia — ábrelo DESPUÉS de intentarlo · 7 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="1" data-h="1"><span class="n">1</span><div><span class="dur">22 min</span><span class="det">desde <a href="#b1-intro">Qué vas a poder hacer al terminar</a> hasta 2. Agrupar (clustering): la idea antes del término · 7 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="2" data-h="1"><span class="n">2</span><div><span class="dur">46 min</span><span class="det"><a href="#b2-3-los-datos-son-una-tabla-de-numeros-el-arreglo-">3. Los datos son una tabla de números: el arreglo de numpy</a> · 1 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="3" data-h="1"><span class="n">3</span><div><span class="dur">41 min</span><span class="det">desde <a href="#b2-4-ver-cosas-el-minimo-de-matplotlib">4. Ver cosas: el mínimo de matplotlib</a> hasta 6. k-means · 3 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="4" data-h="1"><span class="n">4</span><div><span class="dur">48 min</span><span class="det">desde <a href="#b2-7-el-patron-fit-predict-de-scikit-learn">7. El patrón fit / predict de scikit-learn</a> hasta Trampa 3 · <code>random_state=0</code> no es &quot;la mejor solución&quot; · 8 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="5" data-h="1"><span class="n">5</span><div><span class="dur">58 min</span><span class="det">desde <a href="#b3-trampa-4-astype-uint8-trunca-no-redondea">Trampa 4 · <code>astype(&quot;uint8&quot;)</code> trunca, no redondea</a> hasta 5. Paso 1 — aplicar k-means con k = 8 · 11 secciones</span></div><span class="fecha"></span></li>
+<li data-sesion="6" data-h="1"><span class="n">6</span><div><span class="dur">49 min</span><span class="det">desde <a href="#b4-6-paso-2-imprimir-los-centroides-y-dibujar-la-pa">6. Paso 2 — imprimir los centroides y dibujar la paleta</a> hasta Apéndice · Solución de referencia — ábrelo DESPUÉS de intentarlo · 7 secciones</span></div><span class="fecha"></span></li>
 </ol>
 <p class="nota" id="plan-nota"></p>
 </section>
@@ -477,9 +504,10 @@ border-radius:2px}
 <h2>Qué vas a poder hacer al terminar</h2>
 <div class="meta">
 <span class="chip">7 min estimados</span>
-<span class="chip q">&#9733; Ruta práctica</span>
+<span class="chip q" title="Práctica 1A · k-means en una imagen">&#9733; práctica</span>
 <label class="tiempo">tu tiempo real <input class="real" type="number" min="0" step="1" inputmode="numeric" id="real-b1" name="real-b1" data-bloque="1" aria-label="tiempo real del bloque 1 en minutos"> min</label>
 </div></div></div>
+<div class="sec" data-h="1">
 <p>Esta guía junta todo el material de la Unidad 1 de Aprendizaje no supervisado en
 una sola página. Se abre con doble clic, funciona sin internet y se lee en el
 teléfono. No hace falta saber más que <strong>Python básico</strong>: variables, listas,
@@ -488,6 +516,8 @@ diccionarios, <code>for</code>, <code>while</code>, <code>if</code>, <code>def</
 idea de distancia— se define aquí la primera vez que aparece, en palabras, antes
 de la fórmula.</p>
 
+</div>
+<div class="sec" data-h="1">
 <h3 id="b1-las-siete-cosas-que-vas-a-saber-hacer">Las siete cosas que vas a saber hacer</h3>
 <p>No son objetivos institucionales. Es la lista de lo que vas a poder hacer tú, en
 concreto, cuando cierres esta página:</p>
@@ -522,7 +552,10 @@ recoloreada de 71,747 colores a 8 y el PDF generado con <code>quarto render</cod
 defendidas por escrito.</li>
 </ol>
 
-<div class="estado" data-sec="b1-las-siete-cosas-que-vas-a-saber-hacer"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b1-las-siete-cosas-que-vas-a-saber-hacer"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b1-como-esta-armada-y-por-donde-entrar">Cómo está armada, y por dónde entrar</h3>
 <p>Cuatro bloques. Cada uno abre con su tiempo estimado y con un campo para que
 anotes cuánto tardaste de verdad.</p>
@@ -546,7 +579,10 @@ nombres entre comillas angulares son bloques de esta misma página, no archivos
 aparte.</li>
 </ul>
 
-<div class="estado" data-sec="b1-como-esta-armada-y-por-donde-entrar"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b1-como-esta-armada-y-por-donde-entrar"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b1-lo-que-esta-guia-no-es">Lo que esta guía no es</h3>
 <p>No es un resumen de la clase ni una segunda explicación del libro. Es material de
 trabajo, y trae algo que no vas a encontrar en las lecturas: la lista de las
@@ -556,15 +592,19 @@ esta práctica, cada uno con el número, la salida o el requisito que lo delató
 da hecho y el peso de la actividad salen del PDF del profesor y están citados
 como tales en el bloque 4.</p>
 
-<div class="estado" data-sec="b1-lo-que-esta-guia-no-es"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b1-lo-que-esta-guia-no-es"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
 </section>
-<section class="bloque fuera" id="b2"><div class="cab">
+<section class="bloque" id="b2"><div class="cab">
 <div class="bn" aria-hidden="true">2</div><div>
 <h2>El tema</h2>
 <div class="meta">
 <span class="chip">2 h 20 min estimados</span>
+<span class="chip q" title="Práctica 1A · k-means en una imagen">&#9733; práctica</span>
 <label class="tiempo">tu tiempo real <input class="real" type="number" min="0" step="1" inputmode="numeric" id="real-b2" name="real-b2" data-bloque="2" aria-label="tiempo real del bloque 2 en minutos"> min</label>
 </div></div></div>
+<div class="sec" data-h="1">
 <p>Estas notas son el piso común de la materia. Suponen que sabes Python básico
 (variables, listas, diccionarios, <code>for</code>, <code>if</code>, <code>def</code>, <code>import</code>, leer un
 traceback, <code>pip install</code>) y <strong>nada más</strong>. No suponen numpy, matplotlib,
@@ -575,13 +615,15 @@ de código de este archivo se ejecutó de verdad: las salidas que ves son las
 salidas reales.</p>
 <p><strong>Versiones usadas para todas las salidas de este archivo</strong> (se imprimieron con
 <code>print(np.__version__)</code> y equivalentes):</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>numpy 2.0.2 | scikit-learn 1.6.1 | matplotlib 3.9.4 | Pillow 11.3.0
+<div class="pred-caja" data-pred="b2s0-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>numpy 2.0.2 | scikit-learn 1.6.1 | matplotlib 3.9.4 | Pillow 11.3.0
 </code></pre></div>
-</details>
+</details></div>
 <p>Si tus versiones son otras, los resultados numéricos pueden cambiar en los
 últimos decimales. Anota <strong>siempre</strong> tus versiones en el entregable.</p>
 <hr />
 
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-1-que-significa-no-supervisado">1. Qué significa &quot;no supervisado&quot;</h3>
 <p>Imagina dos cajas de fotos.</p>
 <ul>
@@ -641,7 +683,11 @@ respuestas asignadas por humanos, así que no existe una única partición corre
 </form>
 <hr />
 
-<div class="estado" data-sec="b2-1-que-significa-no-supervisado"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-1-que-significa-no-supervisado"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> el <strong>aprendizaje no supervisado</strong> busca estructura en datos sin respuestas asignadas por humanos, así que no existe una única partición correcta.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-2-agrupar-clustering-la-idea-antes-del-termino">2. Agrupar (clustering): la idea antes del término</h3>
 <p>Tienes 200 canicas revueltas sobre una mesa y te piden hacer 5 montones &quot;de
 canicas parecidas&quot;. Nadie te dijo qué montones deben salir. Tú miras color y
@@ -718,7 +764,11 @@ división.</p>
 </form>
 <hr />
 
-<div class="estado" data-sec="b2-2-agrupar-clustering-la-idea-antes-del-termino"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-2-agrupar-clustering-la-idea-antes-del-termino"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> <strong>agrupar</strong> es formar montones de datos parecidos usando una función distancia; el curso ve familias por centroides, densidad, aglomeración y división.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-3-los-datos-son-una-tabla-de-numeros-el-arreglo-">3. Los datos son una tabla de números: el arreglo de numpy</h3>
 <p>Todo lo que la computadora agrupa son <strong>números organizados en tabla</strong>. La
 herramienta estándar para eso en Python se llama <strong>numpy</strong>, y su objeto central
@@ -733,13 +783,13 @@ arr = np.array([10, 20, 30])
 print(lista * 2)
 print(arr * 2)
 print(arr + 5)
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=lista%20%3D%20%5B10%2C%2020%2C%2030%5D%0Aarr%20%3D%20np.array%28%5B10%2C%2020%2C%2030%5D%29%0A%0Aprint%28lista%20%2A%202%29%0Aprint%28arr%20%2A%202%29%0Aprint%28arr%20%2B%205%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Salida real:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>[10, 20, 30, 10, 20, 30]
+<div class="pred-caja" data-pred="b2s3-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>[10, 20, 30, 10, 20, 30]
 [20 40 60]
 [15 25 35]
 </code></pre></div>
-</details>
+</details></div>
 <p>Lee con cuidado la diferencia, porque es la fuente de errores más común al
 empezar:</p>
 <ul>
@@ -763,15 +813,15 @@ print(tabla)
 print(&quot;forma:&quot;, tabla.shape)
 print(&quot;filas:&quot;, tabla.shape[0], &quot;columnas:&quot;, tabla.shape[1])
 print(&quot;total de numeros:&quot;, tabla.size)
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=tabla%20%3D%20np.array%28%5B%5B1%2C%202%2C%203%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B4%2C%205%2C%206%5D%5D%29%0Aprint%28tabla%29%0Aprint%28%22forma%3A%22%2C%20tabla.shape%29%0Aprint%28%22filas%3A%22%2C%20tabla.shape%5B0%5D%2C%20%22columnas%3A%22%2C%20tabla.shape%5B1%5D%29%0Aprint%28%22total%20de%20numeros%3A%22%2C%20tabla.size%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Salida real:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>[[1 2 3]
+<div class="pred-caja" data-pred="b2s3-sal2"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>[[1 2 3]
  [4 5 6]]
 forma: (2, 3)
 filas: 2 columnas: 3
 total de numeros: 6
 </code></pre></div>
-</details>
+</details></div>
 <p><code>shape</code> devuelve una <strong>tupla</strong>: <code>(2, 3)</code> significa 2 filas y 3 columnas. Se lee
 siempre <strong>de afuera hacia adentro</strong>: primero cuántas filas, luego qué tan largo
 es cada renglón.</p>
@@ -793,20 +843,20 @@ el total tiene que coincidir.</p>
               [4, 5, 6]])
 print(a.reshape(6))
 print(a.reshape(3, 2))
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=a%20%3D%20np.array%28%5B%5B1%2C%202%2C%203%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B4%2C%205%2C%206%5D%5D%29%0Aprint%28a.reshape%286%29%29%0Aprint%28a.reshape%283%2C%202%29%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Salida real:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>[1 2 3 4 5 6]
+<div class="pred-caja" data-pred="b2s3-sal3"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>[1 2 3 4 5 6]
 [[1 2]
  [3 4]
  [5 6]]
 </code></pre></div>
-</details>
+</details></div>
 <p>El orden en que numpy recorre los números para reacomodarlos es <strong>por renglones</strong>
 (termina un renglón, pasa al siguiente). Por eso <code>1 2 3</code> sale antes que <code>4 5 6</code>.</p>
 <p>Si pides una forma imposible, obtienes un error claro:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>ValueError: cannot reshape array of size 6 into shape (4,2)
+<div class="pred-caja" data-pred="b2s3-sal4"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>ValueError: cannot reshape array of size 6 into shape (4,2)
 </code></pre></div>
-</details>
+</details></div>
 <h4>3.4 Indexar con una lista de índices</h4>
 <p>Esto se ve raro la primera vez y es <strong>la pieza clave para recolorear una imagen</strong>
 en la práctica 1A, así que vale la pena verla aislada.</p>
@@ -820,21 +870,21 @@ etiquetas = np.array([0, 2, 2, 1, 0])
 
 print(paleta[etiquetas])
 print(&quot;forma:&quot;, paleta[etiquetas].shape)
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=paleta%20%20%20%3D%20np.array%28%5B%5B255%2C%200%2C%200%5D%2C%20%20%20%20%23%20fila%200%3A%20rojo%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B0%2C%20255%2C%200%5D%2C%20%20%20%20%23%20fila%201%3A%20verde%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B0%2C%200%2C%20255%5D%5D%29%20%20%20%23%20fila%202%3A%20azul%0Aetiquetas%20%3D%20np.array%28%5B0%2C%202%2C%202%2C%201%2C%200%5D%29%0A%0Aprint%28paleta%5Betiquetas%5D%29%0Aprint%28%22forma%3A%22%2C%20paleta%5Betiquetas%5D.shape%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Salida real:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>[[255   0   0]
+<div class="pred-caja" data-pred="b2s3-sal5"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>[[255   0   0]
  [  0   0 255]
  [  0   0 255]
  [  0 255   0]
  [255   0   0]]
 forma: (5, 3)
 </code></pre></div>
-</details>
+</details></div>
 <p>Léelo así: <em>&quot;por cada número de <code>etiquetas</code>, tráeme esa fila de <code>paleta</code>&quot;</em>. Con 5
 etiquetas salieron 5 filas. Es equivalente a este <code>for</code>, pero en una línea y
 mucho más rápido:</p>
 <div class="caja codigo" data-lang="Python"><pre><code>resultado = [paleta[e] for e in etiquetas]
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=resultado%20%3D%20%5Bpaleta%5Be%5D%20for%20e%20in%20etiquetas%5D%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p><strong>Nombre canónico:</strong> en estas notas llamamos a esto <strong>indexado por lista de
 índices</strong>; en la documentación en inglés aparece como <em>fancy indexing</em>.</p>
 <h4>3.5 Una imagen es un arreglo de números</h4>
@@ -859,13 +909,13 @@ print(&quot;pixel (0,0):&quot;, A[0, 0])
 print(&quot;valor minimo:&quot;, A.min(), &quot;valor maximo:&quot;, A.max())
 </code></pre></div>
 <p>Salida real con la imagen oficial del curso:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>tamano PIL (ancho, alto): (604, 340)
+<div class="pred-caja" data-pred="b2s3-sal6"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>tamano PIL (ancho, alto): (604, 340)
 forma: (340, 604, 3)
 dtype: uint8
 pixel (0,0): [77 89 49]
 valor minimo: 0 valor maximo: 255
 </code></pre></div>
-</details>
+</details></div>
 <p>Dos trampas que hay que declarar de una vez:</p>
 <ol>
 <li><strong>PIL dice (ancho, alto); numpy dice (alto, ancho, canales).</strong> Están
@@ -912,7 +962,11 @@ golpe.</p>
 </form>
 <hr />
 
-<div class="estado" data-sec="b2-3-los-datos-son-una-tabla-de-numeros-el-arreglo-"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-3-los-datos-son-una-tabla-de-numeros-el-arreglo-"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> un <strong>arreglo</strong> de numpy es una tabla de números con forma <code>(n datos, d características)</code> que aplica cada operación a todos sus valores de golpe.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-4-ver-cosas-el-minimo-de-matplotlib">4. Ver cosas: el mínimo de matplotlib</h3>
 <p><strong>matplotlib</strong> es la librería para dibujar. Solo necesitas cuatro instrucciones.</p>
 <div class="caja codigo" data-lang="Python"><pre><code>import matplotlib.pyplot as plt
@@ -932,7 +986,7 @@ rango, matplotlib recorta y avisa con un warning.</li>
 ax[0].imshow(A)
 ax[1].imshow(B)
 plt.show()
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=fig%2C%20ax%20%3D%20plt.subplots%281%2C%202%2C%20figsize%3D%2812%2C%204%29%29%20%20%20%23%201%20rengl%C3%B3n%2C%202%20columnas%0Aax%5B0%5D.imshow%28A%29%0Aax%5B1%5D.imshow%28B%29%0Aplt.show%28%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>En un notebook de Jupyter las figuras aparecen debajo de la celda; no necesitas
 guardar archivos.</p>
 <p><strong>En una frase:</strong> con <strong><code>imshow</code></strong> dibujas un arreglo como imagen, y espera forma
@@ -959,7 +1013,11 @@ guardar archivos.</p>
 </form>
 <hr />
 
-<div class="estado" data-sec="b2-4-ver-cosas-el-minimo-de-matplotlib"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-4-ver-cosas-el-minimo-de-matplotlib"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> con <strong><code>imshow</code></strong> dibujas un arreglo como imagen, y espera forma <code>(alto, ancho, 3)</code> con enteros de 0 a 255 o decimales de 0.0 a 1.0.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-5-distancia-como-se-mide-parecido">5. Distancia: cómo se mide &quot;parecido&quot;</h3>
 <p>Dos datos se parecen si están <strong>cerca</strong>. Para medir &quot;cerca&quot; con números se usa
 una <strong>función distancia</strong>: recibe dos datos y devuelve un número, que vale 0 si
@@ -983,13 +1041,13 @@ for i in range(3):
 print(&quot;a mano:&quot;, suma ** 0.5)
 print(&quot;con numpy:&quot;, np.sqrt(((p - q) ** 2).sum()))
 print(&quot;con np.linalg.norm:&quot;, np.linalg.norm(p - q))
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=p%20%3D%20np.array%28%5B10.0%2C%2020.0%2C%2030.0%5D%29%0Aq%20%3D%20np.array%28%5B13.0%2C%2024.0%2C%2030.0%5D%29%0A%0Asuma%20%3D%200%0Afor%20i%20in%20range%283%29%3A%0A%20%20%20%20suma%20%2B%3D%20%28p%5Bi%5D%20-%20q%5Bi%5D%29%20%2A%2A%202%0Aprint%28%22a%20mano%3A%22%2C%20suma%20%2A%2A%200.5%29%0Aprint%28%22con%20numpy%3A%22%2C%20np.sqrt%28%28%28p%20-%20q%29%20%2A%2A%202%29.sum%28%29%29%29%0Aprint%28%22con%20np.linalg.norm%3A%22%2C%20np.linalg.norm%28p%20-%20q%29%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Salida real:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>a mano: 5.0
+<div class="pred-caja" data-pred="b2s5-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>a mano: 5.0
 con numpy: 5.0
 con np.linalg.norm: 5.0
 </code></pre></div>
-</details>
+</details></div>
 <p>Las tres dan lo mismo. La tercera, <code>np.linalg.norm(p - q)</code>, es la que aparece en
 la literatura escrita como <code>||p − q||</code> (dos barras a cada lado). <strong>Esas barras
 dobles se leen &quot;la distancia del vector que va de q a p&quot;, nada más.</strong></p>
@@ -1025,7 +1083,11 @@ cuadrado, suma y saca raíz; en código es <code>np.linalg.norm(p - q)</code>.</
 </form>
 <hr />
 
-<div class="estado" data-sec="b2-5-distancia-como-se-mide-parecido"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-5-distancia-como-se-mide-parecido"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> la <strong>distancia euclidiana</strong> resta número por número, eleva al cuadrado, suma y saca raíz; en código es <code>np.linalg.norm(p - q)</code>.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-6-k-means">6. k-means</h3>
 <h4>6.1 La intuición</h4>
 <p>Tienes 200 canicas sobre la mesa y quieres 8 montones. Haces esto:</p>
@@ -1070,7 +1132,7 @@ que le tocó; busca los centroides que hagan esa suma lo más chica posible.</st
 <div class="caja codigo" data-lang="Python"><pre><code>O = 0
 for x in datos:
     O += min(distancia(x, c) for c in centroides)
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=O%20%3D%200%0Afor%20x%20in%20datos%3A%0A%20%20%20%20O%20%2B%3D%20min%28distancia%28x%2C%20c%29%20for%20c%20in%20centroides%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Ese <code>min(...)</code> es el <code>min_j</code>, y el <code>for</code> es la Σ. Toda la fórmula cabe en tres
 líneas de Python que ya sabías escribir.</p>
 <h4>6.4 Inercia: el mismo número, elevado al cuadrado</h4>
@@ -1122,7 +1184,11 @@ recolocar cada centroide en el promedio de su grupo, hasta que nada cambia.</p>
 </form>
 <hr />
 
-<div class="estado" data-sec="b2-6-k-means"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-6-k-means"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> <strong>k-means</strong> alterna asignar cada dato al centroide más cercano y recolocar cada centroide en el promedio de su grupo, hasta que nada cambia.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-7-el-patron-fit-predict-de-scikit-learn">7. El patrón fit / predict de scikit-learn</h3>
 <p><strong>scikit-learn</strong> (<code>sklearn</code>) empaqueta todos los algoritmos con la misma
 interfaz. Aprendes una vez y te sirve para el curso entero:</p>
@@ -1154,14 +1220,14 @@ print(&quot;inercia:&quot;, round(float(km.inertia_), 4))
 print(&quot;predict de un punto nuevo [9,9]:&quot;, km.predict(np.array([[9.0, 9.0]])))
 </code></pre></div>
 <p>Salida real:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>etiquetas: [1 1 1 0 0 0]
+<div class="pred-caja" data-pred="b2s7-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>etiquetas: [1 1 1 0 0 0]
 centroides:
  [[8.5        8.5       ]
  [1.16666667 1.83333333]]
 inercia: 2.3333
 predict de un punto nuevo [9,9]: [0]
 </code></pre></div>
-</details>
+</details></div>
 <p>Léelo: los tres primeros puntos quedaron en el grupo 1, los tres últimos en el
 0. El centroide del grupo 0 es <code>[8.5, 8.5]</code>, que es justo el promedio de
 <code>[8,8]</code>, <code>[9,8.5]</code> y <code>[8.5,9]</code>. El punto nuevo <code>[9,9]</code> cae, correctamente, en el
@@ -1201,9 +1267,9 @@ resultado; con <code>n_init=10</code> corre 10 veces y conserva la de menor iner
 import inspect
 print(inspect.signature(KMeans).parameters[&quot;n_init&quot;].default)
 </code></pre></div>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>auto
+<div class="pred-caja" data-pred="b2s7-sal2"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>auto
 </code></pre></div>
-</details>
+</details></div>
 <p>Ese valor cambió entre versiones de scikit-learn, así que un notebook sin
 <code>n_init</code> explícito puede dar resultados distintos en otra computadora. Poner el
 número es una línea y te ahorra la discusión.</p>
@@ -1239,7 +1305,11 @@ ajustan con <code>fit(X)</code> y exponen lo aprendido en atributos que terminan
 </form>
 <hr />
 
-<div class="estado" data-sec="b2-7-el-patron-fit-predict-de-scikit-learn"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-7-el-patron-fit-predict-de-scikit-learn"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> los modelos de <strong>scikit-learn</strong> se crean con sus opciones, se ajustan con <code>fit(X)</code> y exponen lo aprendido en atributos que terminan en guion bajo.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-8-la-semilla-random-state-por-que-siempre-se-fij">8. La semilla (<code>random_state</code>): por qué siempre se fija</h3>
 <p>k-means arranca al azar. Si no fijas el azar, <strong>cada corrida da un resultado
 ligeramente distinto</strong> y ni tú ni quien te califica pueden reproducir tus
@@ -1252,12 +1322,12 @@ juguete de arriba:</p>
 b = KMeans(n_clusters=2, random_state=7, n_init=10).fit(X).cluster_centers_
 print(&quot;random_state=0 primer centroide:&quot;, np.round(a[0], 4))
 print(&quot;random_state=7 primer centroide:&quot;, np.round(b[0], 4))
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=a%20%3D%20KMeans%28n_clusters%3D2%2C%20random_state%3D0%2C%20n_init%3D10%29.fit%28X%29.cluster_centers_%0Ab%20%3D%20KMeans%28n_clusters%3D2%2C%20random_state%3D7%2C%20n_init%3D10%29.fit%28X%29.cluster_centers_%0Aprint%28%22random_state%3D0%20primer%20centroide%3A%22%2C%20np.round%28a%5B0%5D%2C%204%29%29%0Aprint%28%22random_state%3D7%20primer%20centroide%3A%22%2C%20np.round%28b%5B0%5D%2C%204%29%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Salida real:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>random_state=0 primer centroide: [8.5 8.5]
+<div class="pred-caja" data-pred="b2s8-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>random_state=0 primer centroide: [8.5 8.5]
 random_state=7 primer centroide: [1.1667 1.8333]
 </code></pre></div>
-</details>
+</details></div>
 <p>Los dos montones son <strong>los mismos</strong>; lo que cambió es <strong>cuál se llama 0 y cuál se
 llama 1</strong>. Esta es la regla general que hay que interiorizar:</p>
 <blockquote>
@@ -1292,7 +1362,11 @@ reproducir, y los números de etiqueta no significan nada por sí mismos.</p>
 </form>
 <hr />
 
-<div class="estado" data-sec="b2-8-la-semilla-random-state-por-que-siempre-se-fij"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-8-la-semilla-random-state-por-que-siempre-se-fij"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> la <strong>semilla</strong> (<code>random_state</code>) fija el azar para poder reproducir, y los números de etiqueta no significan nada por sí mismos.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-9-como-se-entrega-en-esta-materia">9. Cómo se entrega en esta materia</h3>
 <p>Reglas oficiales del repositorio del profesor. No son sugerencias nuestras:</p>
 <ul>
@@ -1333,7 +1407,11 @@ notebook, con texto que explique resultados y código, y sin tardías.</p>
 </form>
 <hr />
 
-<div class="estado" data-sec="b2-9-como-se-entrega-en-esta-materia"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-9-como-se-entrega-en-esta-materia"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> la entrega es un <strong>PDF</strong> producido con <code>quarto render</code> desde un notebook, con texto que explique resultados y código, y sin tardías.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b2-10-glosario-de-bolsillo">10. Glosario de bolsillo</h3>
 <div class="tabla"><table><thead>
 <tr>
@@ -1425,22 +1503,27 @@ notebook, con texto que explique resultados y código, y sin tardías.</p>
 </tbody>
 </table></div>
 
-<div class="estado" data-sec="b2-10-glosario-de-bolsillo"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b2-10-glosario-de-bolsillo"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
 </section>
 <section class="bloque" id="b3"><div class="cab">
 <div class="bn" aria-hidden="true">3</div><div>
 <h2>Trampas medidas</h2>
 <div class="meta">
 <span class="chip">31 min estimados</span>
-<span class="chip q">&#9733; Ruta práctica</span>
+<span class="chip q" title="Práctica 1A · k-means en una imagen">&#9733; práctica</span>
 <label class="tiempo">tu tiempo real <input class="real" type="number" min="0" step="1" inputmode="numeric" id="real-b3" name="real-b3" data-bloque="3" aria-label="tiempo real del bloque 3 en minutos"> min</label>
 </div></div></div>
+<div class="sec" data-h="1">
 <p>Ninguna de estas siete salió de leer. Salieron de correr la práctica y de
 entregarla: cada una trae el número, la salida o el mensaje de error que la
 delató, con el archivo del que sale. Las cuatro primeras se equivocan mientras
 programas; las tres últimas se equivocan mientras escribes, que en esta materia
 es la mitad de la calificación.</p>
 
+</div>
+<div class="sec" data-h="1">
 <h3 id="b3-trampa-1-x-km-tiene-205-360-numeros-no-8">Trampa 1 · <code>X_km</code> tiene 205,360 números, no 8</h3>
 <p>Es el error de lectura más común de la práctica, y arruina el paso 3 completo.</p>
 <ul>
@@ -1470,7 +1553,11 @@ paleta vive en <code>centroids</code>, con una fila por grupo.</p>
 <div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
 </form>
 
-<div class="estado" data-sec="b3-trampa-1-x-km-tiene-205-360-numeros-no-8"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b3-trampa-1-x-km-tiene-205-360-numeros-no-8"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> <code>X_km</code> guarda <strong>una etiqueta entera por pixel</strong>, no colores: la paleta vive en <code>centroids</code>, con una fila por grupo.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b3-trampa-2-n-init-10-no-es-el-valor-por-omision">Trampa 2 · <code>n_init=10</code> no es el valor por omisión</h3>
 <p>Casi todo el mundo lo cree. En scikit-learn 1.6 el valor por omisión es
 <code>n_init=&quot;auto&quot;</code>, que con el arranque <code>init=&quot;k-means++&quot;</code> significa <strong>un solo
@@ -1523,7 +1610,11 @@ computadora de quien te califica— pero no lo vendas como garantía.</p>
 <div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
 </form>
 
-<div class="estado" data-sec="b3-trampa-2-n-init-10-no-es-el-valor-por-omision"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b3-trampa-2-n-init-10-no-es-el-valor-por-omision"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> el valor por omisión de <strong><code>n_init</code></strong> en scikit-learn 1.6 es <code>&quot;auto&quot;</code> —un solo intento con <code>k-means++</code>—, así que escríbelo explícito.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b3-trampa-3-random-state-0-no-es-la-mejor-solucion">Trampa 3 · <code>random_state=0</code> no es &quot;la mejor solución&quot;</h3>
 <ul>
 <li><strong>Medido, y con los números que ya trae la práctica:</strong> <code>random_state=0</code> da
@@ -1554,7 +1645,11 @@ en esta práctica, y un barrido de 40 puso el mínimo en <code>27</code>.</p>
 <div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
 </form>
 
-<div class="estado" data-sec="b3-trampa-3-random-state-0-no-es-la-mejor-solucion"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b3-trampa-3-random-state-0-no-es-la-mejor-solucion"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> ninguna semilla es <strong>&quot;la mejor&quot;</strong>: <code>random_state=7</code> batió a <code>0</code> en esta práctica, y un barrido de 40 puso el mínimo en <code>27</code>.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b3-trampa-4-astype-uint8-trunca-no-redondea">Trampa 4 · <code>astype(&quot;uint8&quot;)</code> trunca, no redondea</h3>
 <p>El código del enunciado convierte los centroides con <code>astype(&quot;uint8&quot;)</code>. Eso
 <strong>corta la parte decimal</strong>; no redondea. Si publicas el hex de tu paleta creyendo
@@ -1568,11 +1663,11 @@ print(&quot;astype uint8:&quot;, trunc, &quot;-&gt; #%02X%02X%02X&quot; % tuple(
 print(&quot;round  uint8:&quot;, redon, &quot;-&gt; #%02X%02X%02X&quot; % tuple(redon))
 print(&quot;iguales?&quot;, np.array_equal(trunc, redon))
 </code></pre></div>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>astype uint8: [112 115  79] -&gt; #70734F
+<div class="pred-caja" data-pred="b3s4-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>astype uint8: [112 115  79] -&gt; #70734F
 round  uint8: [113 116  79] -&gt; #71744F
 iguales? False
 </code></pre></div>
-</details>
+</details></div>
 <p>Dos de los tres canales bajan una unidad. El hex correcto para reportar es el
 truncado, <strong><code>#70734F</code></strong>, porque es el que produce el código literal del
 enunciado; lo que no puedes escribir es que ese hex sea el centroide redondeado.</p>
@@ -1591,7 +1686,11 @@ así que el hex que publiques puede bajar una unidad por canal.</p>
 <div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
 </form>
 
-<div class="estado" data-sec="b3-trampa-4-astype-uint8-trunca-no-redondea"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b3-trampa-4-astype-uint8-trunca-no-redondea"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> <strong><code>astype(&quot;uint8&quot;)</code></strong> corta la parte decimal en vez de redondear, así que el hex que publiques puede bajar una unidad por canal.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b3-trampa-5-sin-reshape-s-no-hay-error-hay-una-tira">Trampa 5 · Sin <code>reshape(s)</code> no hay error, hay una tira de tres pixeles de ancho</h3>
 <p>Ésta es la peor de las cuatro de programación, porque <strong>no avisa</strong>.</p>
 <ul>
@@ -1608,11 +1707,11 @@ la figura sale <strong>entera en blanco</strong>. <code>imshow</code> lee los de
 1.0— recorta los tres canales de los 205,360 pixeles a 1.0. Antes de dibujar
 imprime el rango exacto de tus centroides (<a class="ref" href="#b4-7-paso-3-recolorear-la-imagen-la-parte-donde-tod">«Práctica 1A» §7.2</a>):</li>
 </ul>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>Clipping input data to the valid range for imshow with RGB data
+<div class="pred-caja" data-pred="b3s5-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>Clipping input data to the valid range for imshow with RGB data
 ([0..1] for floats or [0..255] for integers).
 Got range [8.054097056485894..214.17649622312524].
 </code></pre></div>
-</details>
+</details></div>
 <p>El 8.05 y el 214.18 son el canal más bajo y el más alto de tu paleta: por eso
 el mensaje es un buen termómetro de que estás mirando <code>img_km</code> y no otra cosa.</p>
 <ul>
@@ -1638,7 +1737,11 @@ sale en blanco, no está rota la imagen: falta el <code>astype</code>.</li>
 <div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
 </form>
 
-<div class="estado" data-sec="b3-trampa-5-sin-reshape-s-no-hay-error-hay-una-tira"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b3-trampa-5-sin-reshape-s-no-hay-error-hay-una-tira"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> sin <strong><code>.reshape(s)</code></strong> matplotlib no falla: pinta una tira <code>viridis</code> de 205 360 renglones, y sin <code>.astype(&quot;uint8&quot;)</code> la figura sale en blanco.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b3-trampa-6-explicar-un-porque-sin-medir-el-porque">Trampa 6 · Explicar un &quot;porque&quot; sin medir el porque</h3>
 <p>Esta práctica se calificó de verdad, y aquí es donde perdió puntos la primera
 versión del texto.</p>
@@ -1670,7 +1773,11 @@ cayó con 15.85 % de amarillentos frente a un grupo de 2.48 %.</p>
 <div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
 </form>
 
-<div class="estado" data-sec="b3-trampa-6-explicar-un-porque-sin-medir-el-porque"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b3-trampa-6-explicar-un-porque-sin-medir-el-porque"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> ante un <strong>&quot;porque&quot;</strong>, mide el porque: &quot;son demasiado pocos&quot; se cayó con 15.85 % de amarillentos frente a un grupo de 2.48 %.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b3-trampa-7-un-notebook-de-puras-celdas-de-codigo-n">Trampa 7 · Un notebook de puras celdas de código no cumple</h3>
 <p>Y tus cifras no son las de nadie más.</p>
 <ul>
@@ -1701,7 +1808,11 @@ con <code>quarto render</code>, y las cifras que reportas son las de tu corrida.
 <div class="quiz-barra"><button type="button" class="calificar">Calificar</button><button type="button" class="reiniciar">Reiniciar</button><output class="marcador" role="status"></output></div>
 </form>
 
-<div class="estado" data-sec="b3-trampa-7-un-notebook-de-puras-celdas-de-codigo-n"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b3-trampa-7-un-notebook-de-puras-celdas-de-codigo-n"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+<button type="button" data-v="cmp" aria-expanded="false" hidden>comparar con la frase de la guía</button><blockquote class="frase" hidden><b>En una frase (guía):</b> el PDF exige <strong>texto explicativo</strong> junto al código, se genera con <code>quarto render</code>, y las cifras que reportas son las de tu corrida.</blockquote>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b3-tabla-resumen">Tabla resumen</h3>
 <div class="tabla"><table><thead>
 <tr>
@@ -1749,16 +1860,19 @@ con <code>quarto render</code>, y las cifras que reportas son las de tu corrida.
 </tbody>
 </table></div>
 
-<div class="estado" data-sec="b3-tabla-resumen"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b3-tabla-resumen"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
 </section>
 <section class="bloque" id="b4"><div class="cab">
 <div class="bn" aria-hidden="true">4</div><div>
 <h2>Práctica 1A · k-means en una imagen</h2>
 <div class="meta">
 <span class="chip">1 h 26 min estimados</span>
-<span class="chip q">&#9733; Ruta práctica</span>
+<span class="chip q" title="Práctica 1A · k-means en una imagen">&#9733; práctica</span>
 <label class="tiempo">tu tiempo real <input class="real" type="number" min="0" step="1" inputmode="numeric" id="real-b4" name="real-b4" data-bloque="4" aria-label="tiempo real del bloque 4 en minutos"> min</label>
 </div></div></div>
+<div class="sec" data-h="1">
 <blockquote>
 <p><strong>Lee primero «El tema».</strong> Aquí damos por conocido todo lo que está ahí:
 arreglos, <code>shape</code>, <code>reshape</code>, indexado por lista de índices, imágenes como
@@ -1805,6 +1919,8 @@ semilla: random_state=0   |   n_init=10
 </code></pre></div>
 <hr />
 
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-1-que-te-piden-en-palabras-llanas">1. Qué te piden, en palabras llanas</h3>
 <p>El profesor te da un pedazo de código que abre una foto y la convierte en una
 tabla de números. Tú tienes que completar tres cosas:</p>
@@ -1831,7 +1947,10 @@ entregable, este párrafo vale puntos: muestra que entendiste para qué sirve, n
 solo que corriste el código.</p>
 <hr />
 
-<div class="estado" data-sec="b4-1-que-te-piden-en-palabras-llanas"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-1-que-te-piden-en-palabras-llanas"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-2-la-idea-central-un-pixel-es-un-dato-de-tres-nu">2. La idea central: un pixel es un dato de tres números</h3>
 <p>Ya sabes de <a class="ref" href="#b2-3-los-datos-son-una-tabla-de-numeros-el-arreglo-">«El tema» §3.5</a> que una imagen a color es una cuadrícula de pixeles
 y que cada pixel guarda 3 números (R, G, B) entre 0 y 255.</p>
@@ -1852,7 +1971,10 @@ vecinos están juntos. Dos pixeles en esquinas opuestas de la foto caen en el
 mismo grupo si tienen color parecido. No se agrupan regiones, se agrupan colores.</p>
 <hr />
 
-<div class="estado" data-sec="b4-2-la-idea-central-un-pixel-es-un-dato-de-tres-nu"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-2-la-idea-central-un-pixel-es-un-dato-de-tres-nu"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-3-el-flujo-completo-de-un-vistazo">3. El flujo completo, de un vistazo</h3>
 <h4>3.1 Diagrama A — versión ASCII (alternativa)</h4>
 <div class="caja figura" data-lang="esquema"><pre><code>        datos/image.jpg          foto de 604 x 340 pixeles
@@ -1900,7 +2022,10 @@ automáticamente hay que verificarlos contra las mediciones.</p>
 explicado en palabras en <a class="ref" href="#b2-6-k-means">«El tema» §6.1</a>.</em></p>
 <hr />
 
-<div class="estado" data-sec="b4-3-el-flujo-completo-de-un-vistazo"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-3-el-flujo-completo-de-un-vistazo"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-4-paso-0-el-codigo-que-ya-te-dan-linea-por-linea">4. Paso 0 — el código que ya te dan, línea por línea</h3>
 <p>Este bloque es del enunciado. No lo modifiques; solo entiéndelo.</p>
 <div class="caja codigo" data-lang="Python"><pre><code>import numpy as np
@@ -1918,10 +2043,10 @@ X = img.reshape(s[0] * s[1], s[2])
 print(&quot;Tamaño de los datos:&quot;, X.shape)
 </code></pre></div>
 <p><strong>Salida real</strong> (ejecutada con <code>datos/image.jpg</code>):</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>Tamaño de la imagen: (340, 604, 3)
+<div class="pred-caja" data-pred="b4s4-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>Tamaño de la imagen: (340, 604, 3)
 Tamaño de los datos: (205360, 3)
 </code></pre></div>
-</details>
+</details></div>
 <p>Qué hace cada pieza:</p>
 <ul>
 <li><code>Image.open(&quot;image.jpg&quot;)</code> abre la foto. <strong>Si tu notebook no está en la misma
@@ -1941,18 +2066,21 @@ son exactamente los mismos</strong>; solo se reacomodaron (<a class="ref" href="
 <p>Un vistazo a los primeros datos, útil para tu texto:</p>
 <div class="caja codigo" data-lang="Python"><pre><code>print(X[:3])
 print(X.dtype)
-</code></pre></div>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>[[ 77  89  49]
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=print%28X%5B%3A3%5D%29%0Aprint%28X.dtype%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
+<div class="pred-caja" data-pred="b4s4-sal2"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>[[ 77  89  49]
  [ 85  97  61]
  [118 129  99]]
 uint8
 </code></pre></div>
-</details>
+</details></div>
 <p>Es decir: el primer pixel de la foto tiene 77 de rojo, 89 de verde y 49 de azul.
 Un verde oliva oscuro.</p>
 <hr />
 
-<div class="estado" data-sec="b4-4-paso-0-el-codigo-que-ya-te-dan-linea-por-linea"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-4-paso-0-el-codigo-que-ya-te-dan-linea-por-linea"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-5-paso-1-aplicar-k-means-con-k-8">5. Paso 1 — aplicar k-means con k = 8</h3>
 <h4>5.1 Declaración de convención (importante, y va en tu entregable)</h4>
 <p>El enunciado dice <em>&quot;guardar los clusters en la variable <code>X_km</code>&quot;</em>. En estas notas
@@ -1973,13 +2101,13 @@ distingue un entregable bien hecho.</p>
 <div class="caja codigo" data-lang="Python"><pre><code>km = KMeans(n_clusters=8, random_state=0, n_init=10)
 X_km = km.fit_predict(X)
 centroids = km.cluster_centers_
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=km%20%3D%20KMeans%28n_clusters%3D8%2C%20random_state%3D0%2C%20n_init%3D10%29%0AX_km%20%3D%20km.fit_predict%28X%29%0Acentroids%20%3D%20km.cluster_centers_%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Tres líneas y ya está. Lo equivalente, si prefieres verlo en dos pasos:</p>
 <div class="caja codigo" data-lang="Python"><pre><code>km = KMeans(n_clusters=8, random_state=0, n_init=10)
 km.fit(X)
 X_km = km.labels_            # idéntico a fit_predict(X)
 centroids = km.cluster_centers_
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=km%20%3D%20KMeans%28n_clusters%3D8%2C%20random_state%3D0%2C%20n_init%3D10%29%0Akm.fit%28X%29%0AX_km%20%3D%20km.labels_%20%20%20%20%20%20%20%20%20%20%20%20%23%20id%C3%A9ntico%20a%20fit_predict%28X%29%0Acentroids%20%3D%20km.cluster_centers_%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Ambas formas dan exactamente lo mismo (verificado con <code>np.array_equal</code>, ver
 <a class="ref" href="#b2-7-el-patron-fit-predict-de-scikit-learn">«El tema» §7</a>).</p>
 <p><strong>Sobre <code>random_state=0</code> y <code>n_init=10</code>:</strong> el enunciado no los exige. Son
@@ -1991,24 +2119,24 @@ obtiene tus mismos números. Sin él, cada corrida cambia un poco.</li>
 scikit-learn 1.6 el valor por omisión es <code>n_init=&quot;auto&quot;</code>, que con
 <code>init=&quot;k-means++&quot;</code> significa <strong>un solo intento</strong>. Y sí cambia el resultado:</li>
 </ul>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>n_init=&quot;auto&quot;  -&gt;  inercia 91338052.5167   (27 iteraciones)
+<div class="pred-caja" data-pred="b4s5-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>n_init=&quot;auto&quot;  -&gt;  inercia 91338052.5167   (27 iteraciones)
 n_init=1       -&gt;  inercia 91338052.5167   (27 iteraciones)
 n_init=10      -&gt;  inercia 91332527.3237   (35 iteraciones)
 </code></pre></div>
-</details>
+</details></div>
 <p>Con 10 reinicios la inercia baja (grupos un poco más compactos), porque
 k-means se queda con el mejor de los 10 arranques. Escribirlo explícito evita,
 además, que tu notebook dé otro resultado en la computadora de quien te
 califica.</p>
 <h4>5.3 Qué salió (salida real, <code>random_state=0</code>)</h4>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>X_km.shape: (205360,) | dtype: int32
+<div class="pred-caja" data-pred="b4s5-sal2"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>X_km.shape: (205360,) | dtype: int32
 X_km[:10]: [6 6 0 6 3 6 5 2 2 6]
 etiquetas distintas: [0 1 2 3 4 5 6 7]
 centroids.shape: (8, 3)
 inercia: 91332527.3237
 iteraciones hasta converger: 35
 </code></pre></div>
-</details>
+</details></div>
 <p>Lecturas obligadas de esa salida, para tu texto:</p>
 <ul>
 <li><strong><code>X_km</code> tiene 205,360 números</strong>, uno por pixel — no 8. Es el error de lectura
@@ -2023,14 +2151,17 @@ tarda mucho más, revisa que no estés usando un <code>k</code> enorme por error
 </ul>
 <hr />
 
-<div class="estado" data-sec="b4-5-paso-1-aplicar-k-means-con-k-8"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-5-paso-1-aplicar-k-means-con-k-8"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-6-paso-2-imprimir-los-centroides-y-dibujar-la-pa">6. Paso 2 — imprimir los centroides y dibujar la paleta</h3>
 <h4>6.1 Imprimirlos</h4>
 <div class="caja codigo" data-lang="Python"><pre><code>print(centroids)
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=print%28centroids%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p><strong>Salida real</strong> (redondeada a 2 decimales para que quepa; imprime la tuya
 completa):</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>[[112.54 115.72  79.01]
+<div class="pred-caja" data-pred="b4s6-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>[[112.54 115.72  79.01]
  [142.78 120.94  51.33]
  [ 61.04  62.85  28.23]
  [175.5  174.67 135.77]
@@ -2039,7 +2170,7 @@ completa):</p>
  [ 89.05  89.32  49.83]
  [145.89 145.47 104.66]]
 </code></pre></div>
-</details>
+</details></div>
 <p><strong>Fíjate en que son decimales, no enteros.</strong> Tiene sentido: un centroide es el
 <strong>promedio</strong> de los pixeles de su grupo (<a class="ref" href="#b2-6-k-means">«El tema» §6.2</a>), y un promedio casi
 nunca cae en un entero. Los pixeles de la foto son <code>uint8</code>; los centroides son
@@ -2139,7 +2270,7 @@ exactamente <code>len(X)</code>; los porcentajes suman 100 %.</p>
 <div class="caja codigo" data-lang="Python"><pre><code>vals, counts = np.unique(X_km, return_counts=True)
 for v, c in zip(vals, counts):
     print(f&quot;cluster {v}: {c:6d} pixeles ({100*c/len(X_km):5.2f} %)&quot;)
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=vals%2C%20counts%20%3D%20np.unique%28X_km%2C%20return_counts%3DTrue%29%0Afor%20v%2C%20c%20in%20zip%28vals%2C%20counts%29%3A%0A%20%20%20%20print%28f%22cluster%20%7Bv%7D%3A%20%7Bc%3A6d%7D%20pixeles%20%28%7B100%2Ac/len%28X_km%29%3A5.2f%7D%20%25%29%22%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <h4>6.2 Dibujar la paleta</h4>
 <p>Este código es del enunciado, tal cual:</p>
 <div class="caja codigo" data-lang="Python"><pre><code>palette = np.zeros((50, 50 * len(centroids), 3))
@@ -2147,7 +2278,7 @@ for i, c in enumerate(centroids):
     color = c[:3].astype(&quot;uint8&quot;)
     palette[:, i*50: i*50+50, :] += color
 plt.imshow(palette.astype(&quot;uint8&quot;)); plt.show()
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=palette%20%3D%20np.zeros%28%2850%2C%2050%20%2A%20len%28centroids%29%2C%203%29%29%0Afor%20i%2C%20c%20in%20enumerate%28centroids%29%3A%0A%20%20%20%20color%20%3D%20c%5B%3A3%5D.astype%28%22uint8%22%29%0A%20%20%20%20palette%5B%3A%2C%20i%2A50%3A%20i%2A50%2B50%2C%20%3A%5D%20%2B%3D%20color%0Aplt.imshow%28palette.astype%28%22uint8%22%29%29%3B%20plt.show%28%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Qué hace, para que puedas explicarlo (te lo van a pedir: <em>&quot;texto explicando las
 líneas de código usadas&quot;</em>):</p>
 <ul>
@@ -2170,16 +2301,19 @@ color equivale a pintarlo.</li>
 un vistazo, que la imagen no tiene ni rojos ni azules saturados.</p>
 <hr />
 
-<div class="estado" data-sec="b4-6-paso-2-imprimir-los-centroides-y-dibujar-la-pa"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-6-paso-2-imprimir-los-centroides-y-dibujar-la-pa"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-7-paso-3-recolorear-la-imagen-la-parte-donde-tod">7. Paso 3 — recolorear la imagen (la parte donde todos se atoran)</h3>
 <p>Hay que sustituir cada pixel por el centroide de su grupo. Suena a doble <code>for</code>
 sobre 205,360 pixeles. <strong>No lo hagas así</strong>: hay una línea que lo resuelve.</p>
 <div class="caja codigo" data-lang="Python"><pre><code>img_km = centroids[X_km]        # (205360, 3): cada pixel ya es su centroide
 img_km = img_km.reshape(s)      # (340, 604, 3): vuelve a ser una foto
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=img_km%20%3D%20centroids%5BX_km%5D%20%20%20%20%20%20%20%20%23%20%28205360%2C%203%29%3A%20cada%20pixel%20ya%20es%20su%20centroide%0Aimg_km%20%3D%20img_km.reshape%28s%29%20%20%20%20%20%20%23%20%28340%2C%20604%2C%203%29%3A%20vuelve%20a%20ser%20una%20foto%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <p>Y se muestra con el código del enunciado:</p>
 <div class="caja codigo" data-lang="Python"><pre><code>plt.figure(figsize=(8, 8)); plt.imshow((img_km.astype(&quot;uint8&quot;))); plt.show()
-</code></pre></div>
+</code></pre><a class="traza" href="https://pythontutor.com/visualize.html#code=plt.figure%28figsize%3D%288%2C%208%29%29%3B%20plt.imshow%28%28img_km.astype%28%22uint8%22%29%29%29%3B%20plt.show%28%29%0A&mode=display&py=3" target="_blank" rel="noopener noreferrer" title="Abre Python Tutor (sitio externo) con este código para verlo ejecutarse línea por línea">ver paso a paso &#8599;</a></div>
 <h4>7.1 Por qué funciona <code>centroids[X_km]</code></h4>
 <p>Es exactamente el indexado por lista de índices de <a class="ref" href="#b2-3-los-datos-son-una-tabla-de-numeros-el-arreglo-">«El tema» §3.4</a>, a escala
 grande:</p>
@@ -2195,14 +2329,14 @@ literalmente lo que pide el enunciado. Y es su centroide <em>más cercano</em> p
 k-means asignó cada pixel al centroide más cercano; la etiqueta ya contiene esa
 decisión.</p>
 <p><strong>Salida real de la comprobación:</strong></p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>forma tras indexar centroids[X_km]: (205360, 3)
+<div class="pred-caja" data-pred="b4s7-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>forma tras indexar centroids[X_km]: (205360, 3)
 forma tras reshape: (340, 604, 3)
 dtype: float64
 pixel original (0,0): [77 89 49] -&gt; recoloreado: [89 89 49]
 colores distintos en la imagen original: 71747
 colores distintos en la imagen recoloreada: 8
 </code></pre></div>
-</details>
+</details></div>
 <p><strong>Cifra verificable y el mejor argumento de tu entregable:</strong> la foto pasó de
 <strong>71,747 colores distintos a 8</strong>. Ese es el número que demuestra que la
 compresión ocurrió.</p>
@@ -2212,11 +2346,11 @@ Se movió 12 unidades en el canal rojo: es el precio de tener solo 8 colores.</p
 <p><code>img_km</code> es de tipo <code>float64</code> porque los centroides son promedios. Si le pasas
 decimales fuera del rango 0-1 a <code>imshow</code>, matplotlib recorta valores y avisa.
 Mensaje real medido al hacer <code>plt.imshow(img_km)</code> sin convertir:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>Clipping input data to the valid range for imshow with RGB data
+<div class="pred-caja" data-pred="b4s7-sal2"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>Clipping input data to the valid range for imshow with RGB data
 ([0..1] for floats or [0..255] for integers).
 Got range [8.054097056485894..214.17649622312524].
 </code></pre></div>
-</details>
+</details></div>
 <p>Ese rango, de 8.05 a 214.18, son justo el canal más bajo y el más alto de tus
 centroides. Por eso el enunciado escribe
 <code>plt.imshow((img_km.astype(&quot;uint8&quot;)))</code>. Si ves ese aviso, te faltó el <code>astype</code>.</p>
@@ -2236,7 +2370,10 @@ que caber en un solo tono.</li>
 </ul>
 <hr />
 
-<div class="estado" data-sec="b4-7-paso-3-recolorear-la-imagen-la-parte-donde-tod"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-7-paso-3-recolorear-la-imagen-la-parte-donde-tod"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-8-tus-decisiones-personales">8. Tus decisiones personales</h3>
 <p>Dos alumnos con este mismo material deben entregar trabajos distinguibles. Aquí
 es donde eso pasa. Elige <strong>al menos dos</strong> de las tres y defiéndelas por escrito.</p>
@@ -2244,11 +2381,11 @@ es donde eso pasa. Elige <strong>al menos dos</strong> de las tres y defiéndela
 <p>Elige tu <code>random_state</code> (0, 42, tu número favorito) y <strong>di cuál elegiste y por
 qué fijas uno</strong>. Si quieres ir más lejos, corre con dos semillas distintas y
 compara. Medición real sobre esta imagen:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>inercia con random_state=0: 91332527.3237
+<div class="pred-caja" data-pred="b4s8-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>inercia con random_state=0: 91332527.3237
 inercia con random_state=7: 91327874.1299
 diferencia máxima entre centroides equivalentes: 2.31 (en canales de 0 a 255)
 </code></pre></div>
-</details>
+</details></div>
 <p>Es decir: la paleta es <strong>prácticamente la misma pero no idéntica</strong>, y el orden de
 los 8 colores cambia. Un párrafo explicando esto vale más que diez líneas de
 código extra.</p>
@@ -2256,12 +2393,12 @@ código extra.</p>
 <p>El enunciado pide k = 8 y solo k = 8. Cualquier comparación extra es tuya y es
 <strong>recomendación, no requisito</strong>. Elige 2 o 3 valores (yo tomé 2, 4, 8 y 16) y
 muestra qué se gana y qué se pierde:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>k= 2  inercia =   506304379.65
+<div class="pred-caja" data-pred="b4s8-sal2"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>k= 2  inercia =   506304379.65
 k= 4  inercia =   192916076.02
 k= 8  inercia =    91332527.32
 k=16  inercia =    45817199.69
 </code></pre></div>
-</details>
+</details></div>
 <p><figure class="fig"><img src="data:image/webp;base64,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" alt="La misma imagen recoloreada con k = 2, 4, 8 y 16" loading="lazy"><figcaption>La misma imagen recoloreada con k = 2, 4, 8 y 16</figcaption></figure></p>
 <p>Observa que <strong>la inercia baja al subir k</strong>; por eso no sirve como criterio para
 elegir k (<a class="ref" href="#b2-6-k-means">«El tema» §6.4</a>, donde está el matiz: eso vale para la mejor solución
@@ -2280,7 +2417,10 @@ de por el orden que devolvió scikit-learn (que es arbitrario), y explica por qu
 así se lee mejor.</p>
 <hr />
 
-<div class="estado" data-sec="b4-8-tus-decisiones-personales"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-8-tus-decisiones-personales"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-9-errores-frecuentes-y-que-significan">9. Errores frecuentes y qué significan</h3>
 <div class="tabla"><table><thead>
 <tr>
@@ -2329,7 +2469,10 @@ así se lee mejor.</p>
 </table></div>
 <hr />
 
-<div class="estado" data-sec="b4-9-errores-frecuentes-y-que-significan"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-9-errores-frecuentes-y-que-significan"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-10-que-escribir-la-mitad-de-la-entrega-es-texto">10. Qué escribir (la mitad de la entrega es texto)</h3>
 <p>La regla oficial dice: PDF <strong>&quot;con texto explicando el contenido y las líneas de
 código usadas para obtener los resultados&quot;</strong>. Un notebook de puras celdas de
@@ -2357,7 +2500,10 @@ qué serviría esto en la vida real (compresión, paletas, segmentación).</li>
 de que dos entregas se parezcan.</p>
 <hr />
 
-<div class="estado" data-sec="b4-10-que-escribir-la-mitad-de-la-entrega-es-texto"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-10-que-escribir-la-mitad-de-la-entrega-es-texto"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <h3 id="b4-11-checklist-antes-de-entregar">11. Checklist antes de entregar</h3>
 <ul>
 <li>[ ] El notebook corre <strong>de arriba a abajo sin errores</strong> con &quot;Restart &amp; Run All&quot;.</li>
@@ -2380,7 +2526,10 @@ abrió para revisar</strong> que las imágenes salieron y nada quedó cortado.</
 </ul>
 <hr />
 
-<div class="estado" data-sec="b4-11-checklist-antes-de-entregar"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea></div>
+<div class="estado" data-sec="b4-11-checklist-antes-de-entregar"><button type="button" data-v="ok">&#10003; entendido</button><button type="button" data-v="rep">&#8635; repasar</button><button type="button" data-v="mias">&#9998; con mis palabras</button><textarea hidden rows="3" placeholder="Explica esta sección como se la contarías a alguien. Se guarda en este navegador."></textarea>
+</div>
+</div>
+<div class="sec" data-h="1">
 <details class="spoiler" id="b4-apendice-solucion-de-referencia-abrelo-despues-d"><summary>Apéndice · Solución de referencia — ábrelo DESPUÉS de intentarlo · 8 min</summary><div class="cuerpo">
 <p>Intenta primero con las secciones 4 a 7. El valor de la actividad está en
 resolverla; abajo solo está la comprobación.</p>
@@ -2448,7 +2597,7 @@ plt.figure(figsize=(8, 8)); plt.imshow((img_km.astype(&quot;uint8&quot;))); plt.
 <h4>A.2 La salida completa y literal del bloque anterior</h4>
 <p>Esto es exactamente lo que imprime el código de A.1, corrido tal cual sobre
 <code>datos/image.jpg</code> con <code>random_state=0</code> y <code>n_init=10</code>:</p>
-<details class="pred"><summary>Salida · ¿qué crees que imprime? Predícelo y luego ábrela</summary><div class="caja salida" data-lang="salida"><pre><code>numpy 2.0.2 | sklearn 1.6.1 | matplotlib 3.9.4 | Pillow 11.3.0
+<div class="pred-caja" data-pred="b4s12-sal1"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>numpy 2.0.2 | sklearn 1.6.1 | matplotlib 3.9.4 | Pillow 11.3.0
 Tamaño de la imagen: (340, 604, 3)
 Tamaño de los datos: (205360, 3)
 X_km.shape: (205360,)
@@ -2474,7 +2623,7 @@ cluster 7: #919168   29777 pixeles (14.50 %)
 colores distintos, original: 71747
 colores distintos, recoloreada: 8
 </code></pre></div>
-</details>
+</details></div>
 <p><strong>Si tus números no coinciden</strong>, revisa en este orden: (1) que sea la misma
 imagen; (2) que uses <code>random_state=0</code> y <code>n_init=10</code>; (3) que le pasaste <code>X</code> y no
 <code>img</code> a <code>KMeans</code>. Con otra semilla los centroides cambian poco (≤ 2.31 por canal)
@@ -2498,6 +2647,7 @@ espera: cifras, nombres de colores, y una consecuencia interpretada. Escribe el
 tuyo con tus propias observaciones.</p>
 
 </div></details>
+</div>
 </section>
 </main>
 <footer><p><b>Bryan Rodríguez Abarca</b> · MCDI · INFOTEC 2026-2</p><p>Sitio personal de estudio. El logotipo de INFOTEC identifica a la institución donde se cursa el programa; este sitio no es un canal oficial del centro.</p>
@@ -2570,16 +2720,50 @@ function pintaVencimientos(){
     d.querySelectorAll('section.bloque').forEach(function(s){io.observe(s);});
   }
 
-  var rutas=d.querySelectorAll('.ruta');
-  function ponRuta(r){
-    d.body.classList.toggle('solo-quiz',r==='quiz');
-    rutas.forEach(function(b){
-      b.setAttribute('aria-pressed',b.getAttribute('data-ruta')===r?'true':'false');});
-    guarda(KEY+'ruta',r);
+  // Hitos: el paso k muestra a plena tinta todo lo que hace falta para el
+  // entregable k (y lo de los anteriores); el resto se atenua, no se esconde.
+  var pasos=d.querySelectorAll('.ruta[data-hito]'),nH=pasos.length;
+  function pintaAv(){
+    var e=estados();
+    pasos.forEach(function(b){
+      var k=+b.getAttribute('data-hito'),tot=0,ok=0;
+      d.querySelectorAll('main .sec[data-h] .estado').forEach(function(c){
+        if(+c.closest('.sec').getAttribute('data-h')<=k){
+          tot++; if(e[c.getAttribute('data-sec')]==='ok') ok++;}
+      });
+      b.querySelector('.av').textContent=tot?(ok+' de '+tot+' entendidas'):'';
+    });
   }
-  rutas.forEach(function(b){
-    b.addEventListener('click',function(){ponRuta(b.getAttribute('data-ruta'));});});
-  ponRuta(guardado(KEY+'ruta')==='quiz'?'quiz':'completa');
+  function ponHito(k){
+    d.body.dataset.hito=k;
+    d.querySelectorAll('main .sec').forEach(function(s){
+      s.classList.toggle('fuera',+s.getAttribute('data-h')>k);});
+    d.querySelectorAll('main section.bloque').forEach(function(b){
+      var dentro=b.querySelector('.sec:not(.fuera)');
+      b.classList.toggle('fuera',!dentro);});
+    d.querySelectorAll('nav.saltos a').forEach(function(a){
+      var b=d.getElementById(a.getAttribute('href').slice(1));
+      a.classList.toggle('fuera',!!b&&b.classList.contains('fuera'));});
+    d.querySelectorAll('ol.sesiones li[data-h]').forEach(function(li){
+      li.classList.toggle('fuera',+li.getAttribute('data-h')>k);});
+    pasos.forEach(function(b){
+      b.setAttribute('aria-pressed',+b.getAttribute('data-hito')===k?'true':'false');});
+    guarda(KEY+'hito',k);
+    pintaAv();pintaRepaso();
+  }
+  pasos.forEach(function(b){
+    b.addEventListener('click',function(){ponHito(+b.getAttribute('data-hito'));});});
+  if(nH){
+    var gk=parseInt(guardado(KEY+'hito'),10),ini=0;
+    if(gk>=1&&gk<=nH) ini=gk;
+    else{
+      d.querySelectorAll('ol.hitos li').forEach(function(li,i){
+        var iso=li.getAttribute('data-iso');
+        if(!ini&&iso&&dias(iso)>=0) ini=i+1;});
+      if(!ini) ini=nH;
+    }
+    ponHito(ini);
+  }
 
   var caja=d.getElementById('mejor');
   function pintaMejor(){
@@ -2649,16 +2833,22 @@ function pintaVencimientos(){
   pintaMejor();
 
   var btn=d.getElementById('repaso-btn'),info=d.getElementById('repaso-info'),
-      sec=d.getElementById('repaso'),banco=d.querySelectorAll('main .pregunta');
+      sec=d.getElementById('repaso');
+  // El banco solo tiene las preguntas del paso elegido: repasar lo que todavia
+  // no toca es ruido.
+  function banco(){return [].slice.call(d.querySelectorAll('main .sec:not(.fuera) .pregunta'));}
   function pintaRepaso(){
-    if(!btn||!banco.length) return;
-    btn.hidden=false;
-    var n=Object.keys(fallas()).length;
+    if(!btn) return;
+    var b=banco();
+    btn.hidden=!b.length;
+    if(!b.length) return;
+    btn.textContent='Repaso r\u00e1pido \u00b7 '+Math.min(10,b.length)+' preguntas';
+    var f=fallas(),n=b.filter(function(q){return f[q.id];}).length;
     info.textContent=n?('Llevas '+n+' pregunta'+(n===1?'':'s')+' con fallos pendientes.'):
-      'Todas las preguntas de la unidad, barajadas.';
+      'Todas las preguntas del paso elegido, barajadas.';
   }
   function armaRepaso(){
-    var f=fallas(),lista=[].slice.call(banco);
+    var f=fallas(),lista=banco();
     for(var i=lista.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=lista[i];lista[i]=lista[j];lista[j]=t;}
     lista.sort(function(a,b){return (f[b.id]||0)-(f[a.id]||0);});
     lista=lista.slice(0,10);
@@ -2698,7 +2888,7 @@ function pintaVencimientos(){
     var e=estados(),rep=[],ok=0;
     cajas.forEach(function(c){
       var id=c.getAttribute('data-sec'),v=e[id];
-      c.querySelectorAll('button[data-v]').forEach(function(b){
+      c.querySelectorAll('button[data-v]:not([data-v=cmp])').forEach(function(b){
         var on=b.getAttribute('data-v')===v||(b.getAttribute('data-v')==='mias'&&guardado(KEY+'mias-'+id));
         b.setAttribute('aria-pressed',on?'true':'false');});
       if(v==='rep') rep.push(id); if(v==='ok') ok++;
@@ -2706,15 +2896,27 @@ function pintaVencimientos(){
     if(lista){lista.hidden=!rep.length;lista.querySelector('span').innerHTML=rep.map(function(id){
       return '<a href="#'+id+'">'+tituloDe(id)+'</a>';}).join(' · ');}
     if(rea) rea.querySelector('.cuenta-ok').textContent=ok+' de '+cajas.length+' secciones entendidas.';
+    pintaAv();
   }
   cajas.forEach(function(c){
-    var id=c.getAttribute('data-sec'),ta=c.querySelector('textarea');
+    var id=c.getAttribute('data-sec'),ta=c.querySelector('textarea'),
+        cmp=c.querySelector('button[data-v=cmp]'),frase=c.querySelector('.frase');
     var t=guardado(KEY+'mias-'+id); if(t){ta.value=t;}
     ta.addEventListener('input',function(){if(ta.value) guarda(KEY+'mias-'+id,ta.value); else borra(KEY+'mias-'+id);});
     c.querySelectorAll('button[data-v]').forEach(function(b){
       b.addEventListener('click',function(){
         var v=b.getAttribute('data-v');
-        if(v==='mias'){ta.hidden=!ta.hidden;if(!ta.hidden) ta.focus();return;}
+        // Primero con tus palabras, y solo despues la frase de la guia: comparar
+        // las dos es lo que enseña, leerla antes solo la copia.
+        if(v==='cmp'){
+          frase.hidden=!frase.hidden;
+          b.setAttribute('aria-expanded',frase.hidden?'false':'true');return;}
+        if(v==='mias'){
+          ta.hidden=!ta.hidden;
+          if(cmp) cmp.hidden=ta.hidden;
+          if(frase&&ta.hidden){frase.hidden=true;
+            if(cmp) cmp.setAttribute('aria-expanded','false');}
+          if(!ta.hidden) ta.focus();return;}
         var e=estados(); if(e[id]===v) delete e[id]; else e[id]=v;
         guarda(KEY+'estado',JSON.stringify(e)); pintaEstados();
       });
@@ -2735,32 +2937,99 @@ function pintaVencimientos(){
     d.querySelectorAll('main h3[id],main details.spoiler[id]').forEach(function(h){io2.observe(h);});
   }
 
-  // Plan con fechas: reparte las sesiones desde la primera visita hasta la vispera
-  // del vencimiento, y anade dos repasos (a los 2 dias y la vispera).
-  var pill=d.querySelector('.pill[data-iso]'),nota=d.getElementById('plan-nota'),
-      lis=d.querySelectorAll('ol.sesiones li[data-sesion]');
-  if(pill&&nota&&lis.length){
-    var iso=pill.getAttribute('data-iso'),hoy=new Date();hoy.setHours(0,0,0,0);
+  // Plan con fechas POR HITO: la ventana de cada paso va desde el vencimiento
+  // del anterior (o tu primera visita) hasta la vispera del suyo.
+  var nota=d.getElementById('plan-nota'),
+      pasosLi=[].slice.call(d.querySelectorAll('ol.hitos li'));
+  if(nota&&pasosLi.length){
+    var hoy=new Date();hoy.setHours(0,0,0,0);
     var inicio=guardado(KEY+'plan-inicio');
     if(!inicio){inicio=hoy.toISOString().slice(0,10);guarda(KEY+'plan-inicio',inicio);}
-    var d0=new Date(inicio+'T00:00:00'),fin=new Date(iso+'T00:00:00');fin.setDate(fin.getDate()-1);
-    var dias=Math.max(0,Math.round((fin-d0)/864e5)),n=lis.length;
+    var uni=d.querySelector('.pill[data-iso]'),uniISO=uni?uni.getAttribute('data-iso'):'';
     var MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
     function fmt(dt){return dt.getDate()+' '+MES[dt.getMonth()];}
-    function enDias(k){var x=new Date(d0);x.setDate(x.getDate()+k);return x;}
-    if(fin<hoy){nota.textContent='El vencimiento ya pasó: usa el plan como orden, sin fechas.';}
-    else{
-      var paso=dias/Math.max(1,n),fechas=[];
-      lis.forEach(function(li,i){
-        var dt=enDias(Math.round(i*paso));fechas.push(dt);
-        var f=li.querySelector('.fecha');f.textContent=fmt(dt);
-        if(dt<hoy) li.classList.add('pasada'); else if(dt.getTime()===hoy.getTime()) li.classList.add('hoy');
+    var d0=new Date(inicio+'T00:00:00'),cursor=d0,visperas=[],
+        conFechas=false,hubo=false;
+    pasosLi.forEach(function(li,i){
+      var k=i+1,iso=li.getAttribute('data-iso'),fin=null;
+      var ses=d.querySelectorAll('ol.sesiones li[data-h="'+k+'"]'),
+          h3=d.querySelector('h3.plan-hito[data-h="'+k+'"]');
+      if(iso){fin=new Date(iso+'T00:00:00');fin.setDate(fin.getDate()-1);}
+      else if(uniISO){var u=new Date(uniISO+'T00:00:00');u.setDate(u.getDate()-1);
+        if(u>cursor) fin=u;}
+      if(!fin) return;
+      hubo=true;
+      var sig=iso?new Date(iso+'T00:00:00'):new Date(fin);
+      if(fin<hoy){   // la ventana entera ya paso: sin fechas, solo el sello
+        ses.forEach(function(li2){li2.classList.add('pasada');});
+        if(h3&&!h3.querySelector('small')) h3.insertAdjacentHTML('beforeend',' <small>venció</small>');
+        cursor=sig>cursor?sig:cursor;return;
+      }
+      conFechas=true;
+      var ini=cursor>d0?cursor:d0;
+      if(fin<ini) fin=new Date(ini);
+      var dd=Math.max(0,Math.round((fin-ini)/864e5)),paso=dd/Math.max(1,ses.length);
+      ses.forEach(function(li2,j){
+        var dt=new Date(ini);dt.setDate(dt.getDate()+Math.round(j*paso));
+        li2.querySelector('.fecha').textContent=fmt(dt);
+        if(dt<hoy) li2.classList.add('pasada');
+        else if(dt.getTime()===hoy.getTime()) li2.classList.add('hoy');
       });
-      var r1=enDias(Math.min(2,dias)),r2=fin;
-      nota.innerHTML='Fechas repartidas desde tu primera visita ('+fmt(d0)+') hasta la víspera ('
-        +fmt(fin)+'). Repaso rápido sugerido: <b>'+fmt(r1)+'</b>'+(r2>r1?' y <b>'+fmt(r2)+'</b>':'')
-        +'. Es una sugerencia; el orden importa más que el día.';
-    }
+      visperas.push(fmt(fin));
+      cursor=sig>cursor?sig:cursor;
+    });
+    if(!conFechas) nota.textContent=hubo
+      ?'Todos los vencimientos ya pasaron: usa el plan como orden, sin fechas.'
+      :'Sin vencimientos: usa el plan como orden, sin fechas.';
+    else nota.innerHTML='Fechas desde tu primera visita ('+fmt(d0)+') hasta la víspera de cada '
+      +'vencimiento. Repaso rápido sugerido la víspera de cada hito: <b>'
+      +visperas.join('</b>, <b>')+'</b>. Es una sugerencia; el orden importa más que el día.';
+  }
+
+  // Prediccion escrita antes de abrir cada salida.
+  d.querySelectorAll('.pred-caja').forEach(function(c){
+    var k=KEY+'pred-'+c.getAttribute('data-pred'),ta=c.querySelector('.pred-mia'),
+        det=c.querySelector('details');
+    var v=guardado(k); if(v) ta.value=v;
+    ta.addEventListener('input',function(){
+      if(ta.value) guarda(k,ta.value); else borra(k);});
+    det.addEventListener('toggle',function(){
+      if(!det.open) return;
+      if(ta.value.trim()) c.classList.add('hecha');
+      else ta.placeholder='Abriste sin predecir. La próxima vez escribe algo antes: '
+        +'es lo que fija el aprendizaje.';
+    });
+  });
+
+  // Progreso portatil: todo vive en localStorage, asi que exportarlo es copiar
+  // las claves de esta materia a un JSON.
+  var pio=d.getElementById('progreso-io');
+  if(pio){
+    var pref='guia-aprendizaje-no-supervisado-',pta=d.getElementById('prog-json'),
+        pmsg=d.getElementById('prog-msg');
+    function mio(k){return k.indexOf(pref)===0||k==='guia-tema';}
+    pio.addEventListener('toggle',function(){
+      if(!pio.open) return;
+      var o={};
+      try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);
+        if(mio(k)) o[k]=localStorage.getItem(k);}}catch(e){}
+      pta.value=JSON.stringify(o);
+    });
+    d.getElementById('prog-copiar').addEventListener('click',function(){
+      if(navigator.clipboard&&navigator.clipboard.writeText)
+        navigator.clipboard.writeText(pta.value).then(function(){pmsg.textContent='Copiado.';},
+          function(){pmsg.textContent='Cópialo a mano.';});
+      else{pta.select();pmsg.textContent='Cópialo a mano.';}
+    });
+    d.getElementById('prog-importar').addEventListener('click',function(){
+      var o;
+      try{o=JSON.parse(pta.value);}catch(e){pmsg.textContent='JSON inválido';return;}
+      if(!o||typeof o!=='object'){pmsg.textContent='JSON inválido';return;}
+      var n=0;
+      Object.keys(o).forEach(function(k){if(mio(k)){guarda(k,String(o[k]));n++;}});
+      pmsg.textContent=n+' claves importadas; recarga la página';
+      setTimeout(function(){location.reload();},800);
+    });
   }
 
   var reales=d.querySelectorAll('input.real');
