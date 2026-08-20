@@ -538,7 +538,7 @@ a.card-e:hover .go span{transform:translateX(3px)}
 <hr class="divider">
 <div class="secciones" role="group" aria-label="Qué quieres ver">
 <button type="button" class="secbtn" data-sec="apuntes" aria-controls="apuntes" aria-pressed="false"><span class="t">Apuntes</span><span class="d">Guías de estudio por unidad, con su tiempo estimado.</span><span class="c">1 de 4 unidades</span></button>
-<button type="button" class="secbtn" data-sec="entregables" aria-controls="entregables" aria-pressed="false"><span class="t">Entregables</span><span class="d">Los PDF que entregué, conforme vence cada actividad.</span><span class="c">1 publicada · 7 programadas</span></button>
+<button type="button" class="secbtn" data-sec="entregables" aria-controls="entregables" aria-pressed="false"><span class="t">Entregables</span><span class="d">Los PDF que entregué, conforme vence cada actividad.</span><span class="c">2 publicadas · 6 programadas</span></button>
 </div>
 <section id="apuntes"><h2 class="rotulo">Apuntes por unidad</h2>
 <ul class="tarjetas">
@@ -565,9 +565,9 @@ a.card-e:hover .go span{transform:translateX(3px)}
 <li><a class="card-e" href="entregas/1A_Practica_KmeansImagen_RodriguezAbarca.pdf">
 <div class="fila-e"><span class="tag">1A</span><span class="title">Práctica Kmeans en una imagen</span><span class="estado">Publicada</span></div>
 <p class="meta-e"><span>Unidad 1</span><span class="dot"></span><span>PDF · 11 páginas</span><span class="dot"></span><span class="go">Abrir <span>&#8594;</span></span></p></a></li>
-<li><div class="card-e pendiente">
-<div class="fila-e"><span class="tag">1B</span><span class="title">Práctica Implementar la métrica intra/inter clusters</span><span class="estado">Programada</span></div>
-<p class="meta-e"><span>Unidad 1</span><span class="dot"></span><span>vence el 20 de agosto</span></p></div></li>
+<li><a class="card-e" href="entregas/1B_Practica_MetricaIntraInter_RodriguezAbarca.pdf">
+<div class="fila-e"><span class="tag">1B</span><span class="title">Práctica Implementar la métrica intra/inter clusters</span><span class="estado">Publicada</span></div>
+<p class="meta-e"><span>Unidad 1</span><span class="dot"></span><span>PDF · 10 páginas</span><span class="dot"></span><span class="go">Abrir <span>&#8594;</span></span></p></a></li>
 <li><div class="card-e pendiente">
 <div class="fila-e"><span class="tag">1C</span><span class="title">Práctica clusters</span><span class="estado">Programada</span></div>
 <p class="meta-e"><span>Unidad 1</span><span class="dot"></span><span>vence el 3 de septiembre</span></p></div></li>
@@ -637,6 +637,11 @@ function pintaVencimientos(){
 
   // Las secciones solo se ocultan desde aqui: sin JS se ven las dos.
   var btns=[].slice.call(d.querySelectorAll('.secbtn'));
+  // Con un solo lado disponible el selector es ruido: se oculta.
+  if(btns.filter(function(b){return !b.disabled;}).length<2){
+    var cont=d.querySelector('.secciones');
+    if(cont) cont.style.display='none';
+  }
   var KEY='guia-aprendizaje-no-supervisado-seccion',DEF='apuntes';
   function valida(s){
     for(var i=0;i<btns.length;i++)
