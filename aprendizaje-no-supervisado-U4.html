@@ -1492,7 +1492,7 @@ for t in mensajes[etiqueta == c][:3]:
 conjunto de juguete.</p>
 <h4>7.4 Lo que no se puede afirmar</h4>
 <p>Un grupo casi nunca es puro. En el ejemplo de juguete sé de qué familia era
-cada mensaje —los fabriqué yo—, así que puedo medir la pureza, cosa que en
+cada mensaje —los fabriqué yo—, así que puedo medir la <strong>pureza</strong> (qué fracción del grupo es de la familia mayoritaria), cosa que en
 4A es imposible porque nadie etiquetó esos veinte mil tweets:</p>
 <div class="pred-caja" data-pred="b2s7-sal2"><label class="pred-lab">Antes de abrir: ¿qué imprime? Escríbelo aquí (se guarda en este navegador).<textarea class="pred-mia" rows="2"></textarea></label><details class="pred"><summary>Salida · compárala con tu predicción</summary><div class="caja salida" data-lang="salida"><pre><code>de que familia son los mensajes de cada grupo:
   c0 -&gt; futbol   94 de 95 (99 %)
@@ -1776,23 +1776,9 @@ pandas 2.3.3 | matplotlib 3.9.4
 umap-learn 0.5.12 | wordcloud 1.9.6
 </code></pre></div>
 </details></div>
-<p><strong>Con esta versión exacta de las librerías, en tu máquina, tus cifras
-deberían salir idénticas a estas.</strong> El código fija <code>init=&quot;pca&quot;</code> y una
-semilla, justo para lograrlo: recalculé el mapa completo de 20 000 puntos
-y comparé contra el guardado en <code>cache/</code> — coincide bit a bit, sin la
-menor diferencia. Con la inicialización por omisión de UMAP (&quot;spectral&quot;)
-no hay esa garantía: la entrega ya subida documenta el mismo
-<code>random_state</code>, en la misma máquina, dando 128 clusters una corrida y 140
-la siguiente — por eso este material no la usa. Aun con <code>init=&quot;pca&quot;</code>, una
-versión distinta de una dependencia que no fijamos (<code>pynndescent</code>,
-<code>numba</code>, el backend de álgebra lineal) sí puede mover el mapa y todo lo
-que cuelga de él —anomalías-en-el-centro, número de clusters, cuál es
-cuál—; si tus cifras dependientes del mapa no coinciden, sospecha primero
-de esas versiones antes de asumir que &quot;así es UMAP&quot;. Lo que no depende
-del mapa coincide siempre: las 20 000 filas de 768 columnas, los 12
-emojis, y las 323 anomalías con <code>contamination=&quot;auto&quot;</code> y la semilla fija.
-Anota tus versiones en el notebook y reporta <strong>las cifras de tu corrida</strong>,
-no las de aquí.</p>
+<p><strong>Las cifras de este apunte pertenecen a la receta indicada arriba</strong>, con <code>init=&quot;pca&quot;</code> y semilla fija. La comparación local contra <code>cache/</code> coincidió bit a bit en aquella revisión; no es una garantía para cualquier máquina o dependencia.</p>
+<p>Una versión histórica con inicialización <code>spectral</code> registró 128 y 140 clusters con el mismo <code>random_state</code> (véase <a href="4A.guidance.md">la guía de revisión de esa versión</a>). Ese antecedente no identifica por sí solo la causa de la diferencia ni demuestra que <code>spectral</code> sea siempre inestable. La <strong>entrega vigente</strong>, corregida el 5 de octubre, usa PCA y reporta <strong>108 clusters</strong>, 323 anomalías y 19 677 filas retenidas; está <strong>preparada, sin envío confirmado</strong> según la <a href="../../../BITACORA-ENTREGAS.md">bitácora local</a>. El antecedente histórico no describe su estado ni sus resultados actuales.</p>
+<p>Cambiar <code>pynndescent</code>, <code>numba</code>, NumPy o el backend de álgebra lineal puede mover el mapa y los resultados que dependen de él. Si no coinciden tus cifras, registra el entorno y ejecuta otra vez antes de atribuir la diferencia a una causa concreta. Las 20 000 filas de 768 columnas son una propiedad de los datos; las 323 anomalías corresponden al detector y la receta aquí documentados. Reporta <strong>las cifras de tu corrida</strong>, no las de aquí.</p>
 <p>Las secciones:</p>
 <ol>
 <li>Qué te piden, en palabras llanas</li>

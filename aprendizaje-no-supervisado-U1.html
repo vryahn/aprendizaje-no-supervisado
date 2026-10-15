@@ -1183,7 +1183,7 @@ líneas de Python que ya sabías escribir.</p>
 <li><strong>No se compara entre conjuntos de datos distintos</strong>, solo entre corridas sobre
 los mismos datos.</li>
 <li>Baja al subir k (con k = número de datos valdría 0), así que <strong>no sirve por sí
-sola para elegir k</strong>. Un matiz que importa al dibujar la curva del codo: eso
+sola para elegir k</strong>. Un matiz que importa al dibujar la curva del codo (la inercia contra <code>k</code>: se busca dónde deja de bajar rápido): eso
 vale para la <em>mejor</em> solución de cada k, y KMeans no siempre la encuentra —
 con <code>n_init=1</code> puede caer en un óptimo local y devolver una inercia
 <strong>mayor</strong> que la de un k más chico. Medido con 60 puntos normales
